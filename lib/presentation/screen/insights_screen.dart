@@ -51,13 +51,7 @@ class InsightsScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        //
-                    //        const Center(
-                    //   child: Text(
-                    //     '✦ ─── ✦',
-                    //     style: TextStyle(color: AppColors.black12, fontSize: 12),
-                    //   ),
-                    // ),
+                 
                         SizedBox(width: 4),
                     
                         LuckNumberCard.dot(5, AppColors.tealBlue),

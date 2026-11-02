@@ -1,4 +1,3 @@
-import 'package:astrologer_app/core/theme/app_theme.dart';
 import 'package:astrologer_app/presentation/screen/main_layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +15,7 @@ class AstroApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Astro Tracker',
-      theme: AppTheme.darkTheme,
+      // theme: AppTheme.darkTheme,
       home: BlocProvider(
         create: (context) => AstroCubit()..loadDashboardData(),
         child: const MainLayout(),

@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:astrologer_app/presentation/astro_cubit/astro_cubit.dart';
 import 'package:astrologer_app/presentation/astro_cubit/state_cubit.dart';
-import 'package:astrologer_app/presentation/screen/insights_screen.dart';
 import 'package:astrologer_app/presentation/screen/natal.dart';
 import 'package:astrologer_app/presentation/screen/widgets/resusable_widget.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +44,7 @@ class HomeScreen extends StatelessWidget {
 
                 // TOP PROFILE INFORMATION
                 const Positioned(
-                  left: 10,
+                  left: 20,
                   top: 60,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Positioned(
                   left: 45,
-                  top: 220,
+                  top: 250,
                   child: SvgPicture.asset(
                     "assets/svg/symbol_three.svg", //done
                     height: 20,
@@ -108,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Positioned(
                   left: 120,
-                  top: 50,
+                  top: 60,
                   child: SvgPicture.asset(
                     ''
                     "assets/svg/symbol_five.svg",
@@ -121,8 +120,8 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 180,
-                  top: 45,
+                  left: 200,
+                  top: 80,
                   child: SvgPicture.asset(
                     "assets/svg/symbol_six.svg",
                     height: 20,
@@ -138,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                 // PROFILE ICON (Fixed to be circular like the design)
                 Positioned(
                   right: 70,
-                  top: 55,
+                  top: 60,
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -165,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Positioned(
                   right: 15,
-                  top: 55,
+                  top: 60,
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -363,7 +362,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               Positioned(
-                                top: -12,
+                                top: -30,
                                 right: 20,
                                 child: SvgPicture.asset(
                                   'assets/svg/sign.svg',
@@ -425,7 +424,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // Uniform Layout Wrapper Frame
 }
 
 // Concentric Dial Painting Processor Engine
