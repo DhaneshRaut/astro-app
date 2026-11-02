@@ -48,7 +48,7 @@
 //         items: [
 //           BottomNavigationBarItem(
 //             label: "Home",
-//             backgroundColor: Colors.white,
+//             backgroundColor: AppColors.textWhite,
 //             icon: SvgPicture.asset(
 //               "assets/svg/unselected_home.svg",
 //               height: 28,
@@ -117,7 +117,6 @@
 //   }
 // }
 
-
 import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -157,7 +156,7 @@ class _MainLayoutState extends State<MainLayout> {
           color: AppColors.textWhite,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: AppColors.black.withOpacity(0.05),
               blurRadius: 10,
               offset: const Offset(0, -2),
             ),
@@ -169,15 +168,31 @@ class _MainLayoutState extends State<MainLayout> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildNavItem(0, "Home", "assets/svg/unselected_home.svg",
-                    "assets/svg/selected_home.svg"),
-                _buildNavItem(1, "Goals", "assets/svg/unselected_goal.svg",
-                    "assets/svg/selected_goal.svg"),
-                _buildNavItem(2, "Journal", "assets/svg/unselected_journal.svg",
-                    "assets/svg/selected_journal.svg"),
-                _buildNavItem(3, "Insights", "assets/svg/unselected_insight.svg",
-                    "assets/svg/selected_insights.svg",
-                    isInsights: true),
+                _buildNavItem(
+                  0,
+                  "Home",
+                  "assets/svg/unselected_home.svg",
+                  "assets/svg/selected_home.svg",
+                ),
+                _buildNavItem(
+                  1,
+                  "Goals",
+                  "assets/svg/unselected_goal.svg",
+                  "assets/svg/selected_goal.svg",
+                ),
+                _buildNavItem(
+                  2,
+                  "Journal",
+                  "assets/svg/unselected_journal.svg",
+                  "assets/svg/selected_journal.svg",
+                ),
+                _buildNavItem(
+                  3,
+                  "Insights",
+                  "assets/svg/unselected_insight.svg",
+                  "assets/svg/selected_insights.svg",
+                  isInsights: true,
+                ),
               ],
             ),
           ),
@@ -200,7 +215,8 @@ class _MainLayoutState extends State<MainLayout> {
         behavior: HitTestBehavior.opaque,
         onTap: () => setState(() => _activeTab = index),
         child: Stack(
-          clipBehavior: Clip.none, // Allows the top icon to overflow outside the container
+          clipBehavior: Clip
+              .none, // Allows the top icon to overflow outside the container
           alignment: Alignment.center,
           children: [
             // 1. GLOW EFFECT (Only shows when selected)
@@ -212,10 +228,12 @@ class _MainLayoutState extends State<MainLayout> {
                   height: 50,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: const Color(0xFFE0F7FA).withOpacity(0.6), // Light cyan glow
+                    color: AppColors.glowCyan.withOpacity(
+                      0.6,
+                    ), // Light cyan glow
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFE0F7FA).withOpacity(0.9),
+                        color: AppColors.glowCyan.withOpacity(0.9),
                         blurRadius: 20,
                         spreadRadius: 8,
                       ),
@@ -238,7 +256,9 @@ class _MainLayoutState extends State<MainLayout> {
                   label,
                   style: TextStyle(
                     fontSize: 12,
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                    fontWeight: isSelected
+                        ? FontWeight.w600
+                        : FontWeight.normal,
                     color: isSelected
                         ? AppColors.accentTeal
                         : AppColors.textMuted,
@@ -248,7 +268,7 @@ class _MainLayoutState extends State<MainLayout> {
             ),
 
             // 3. TOP CUSTOM INDICATOR (Only for Insights when selected)
-            if (isSelected )
+            if (isSelected)
               Positioned(
                 top: -0, // Adjust this to push the indicator up onto the edge
                 child: SvgPicture.asset(

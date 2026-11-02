@@ -1,5 +1,6 @@
 
 import 'dart:math' as math;
+import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:flutter/material.dart';
 
 
@@ -10,11 +11,11 @@ class CircularWheelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent  ,
+      backgroundColor: AppColors.transparent  ,
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-          colors: [Color(0xff144750) ,Color(0xff081C20)] ,
+          colors: [AppColors.deepTeal ,AppColors.darkestTeal] ,
           begin: Alignment.topLeft ,
           end: Alignment.center
         ),
@@ -46,21 +47,21 @@ class CircularWheelScreen extends StatelessWidget {
                   Text(
                     "Good Evening,",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textWhite,
                       fontSize: 12,
                     ),
                   ),
                   Text(
                     "Saniya",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textWhite,
                       fontSize: 26,
                     ),
                   ),
                   Text(
                     "Air • Mutable • Mercury",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.textWhite,
                       fontSize: 12,
                     ),
                   ),
@@ -78,13 +79,13 @@ class CircularWheelScreen extends StatelessWidget {
               builder: (context, scrollController) {
                 return Container(
                   decoration: const BoxDecoration(
-                    color: Color(0xFFFFFCF3),
+                    color: AppColors.creamWhite,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(28),
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black26,
+                        color: AppColors.black26,
                         blurRadius: 15,
                         offset: Offset(0, -4),
                       ),
@@ -104,7 +105,7 @@ class CircularWheelScreen extends StatelessWidget {
                           height: 5,
                           width: 45,
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade400,
+                            color: AppColors.grey400,
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
@@ -117,7 +118,7 @@ class CircularWheelScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF263D45),
+                          color: AppColors.deepMutedTeal,
                         ),
                       ),
         
@@ -128,7 +129,7 @@ class CircularWheelScreen extends StatelessWidget {
                         "and the direction of your life.",
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.black54,
+                          color: AppColors.black54,
                         ),
                       ),
         
@@ -184,10 +185,10 @@ class CircularWheelScreen extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.textWhite,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: const Color(0xFFEAE5D8),
+          color: AppColors.sand,
         ),
       ),
       child: Column(
@@ -198,7 +199,7 @@ class CircularWheelScreen extends StatelessWidget {
             style: const TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF27828E),
+              color: AppColors.luckyTeal,
             ),
           ),
           const SizedBox(height: 8),
@@ -207,7 +208,7 @@ class CircularWheelScreen extends StatelessWidget {
             style: const TextStyle(
               fontSize: 14,
               height: 1.5,
-              color: Colors.black54,
+              color: AppColors.black54,
             ),
           ),
         ],
@@ -249,12 +250,12 @@ class CircularWheelPainter extends CustomPainter {
 
     // Circle colors
     final colors = [
-      const Color(0xFFFEFBEC),
-      const Color(0xFFFEF2C2),
-      const Color(0xFFDFD4AA),
-      const Color(0xFF659BA5),
-      const Color(0xFF84BAC4),
-      const Color(0xFFA9D1D9),
+      AppColors.cream,
+      AppColors.lemonYellow,
+      AppColors.desertBeige,
+      AppColors.steelBlue,
+      AppColors.softAqua,
+      AppColors.paleCyan,
     ];
 
     // Draw concentric circles
@@ -280,8 +281,8 @@ class CircularWheelPainter extends CustomPainter {
       ringRadius: (radii[0] + radii[1]) / 2,
       numbers: ['19', '20', '21', '22', '23', '24', '25'],
       fontSize: size.width * 0.065,
-      normalColor: const Color(0xFFD9D7C8),
-      selectedColor: const Color(0xFF171711),
+      normalColor: AppColors.ringMuted,
+      selectedColor: AppColors.ringSelected,
       selectedNumbers: ['22'],
     );
 
@@ -292,8 +293,8 @@ class CircularWheelPainter extends CustomPainter {
       ringRadius: (radii[1] + radii[2]) / 2,
       numbers: ['6', '7', '8', '9', '10', '11', '12'],
       fontSize: size.width * 0.052,
-      normalColor: const Color(0xFFC5B98E),
-      selectedColor: const Color(0xFF171711),
+      normalColor: AppColors.ringGold,
+      selectedColor: AppColors.ringSelected,
       selectedNumbers: ['9'],
     );
 
@@ -304,8 +305,8 @@ class CircularWheelPainter extends CustomPainter {
       ringRadius: (radii[2] + radii[3]) / 2,
       numbers: ['17', '18', '19', '20', '21', '22', '23'],
       fontSize: size.width * 0.048,
-      normalColor: const Color(0xFFB4A980),
-      selectedColor: const Color(0xFF171711),
+      normalColor: AppColors.ringSand,
+      selectedColor: AppColors.ringSelected,
       selectedNumbers: ['20'],
     );
 
@@ -316,8 +317,8 @@ class CircularWheelPainter extends CustomPainter {
       ringRadius: (radii[3] + radii[4]) / 2,
       numbers: ['11', '12', '13', '14', '15', '16', '17'],
       fontSize: size.width * 0.046,
-      normalColor: const Color(0xFF467F89),
-      selectedColor: const Color(0xFF101C1C),
+      normalColor: AppColors.ringTeal,
+      selectedColor: AppColors.ringDark,
       selectedNumbers: ['14'],
     );
 
@@ -328,8 +329,8 @@ class CircularWheelPainter extends CustomPainter {
       ringRadius: (radii[4] + radii[5]) / 2,
       numbers: ['5', '6', '7', '8', '9', '10', '11'],
       fontSize: size.width * 0.042,
-      normalColor: const Color(0xFF699BA2),
-      selectedColor: const Color(0xFF101C1C),
+      normalColor: AppColors.ringBlue,
+      selectedColor: AppColors.ringDark,
       selectedNumbers: ['8'],
     );
 
@@ -340,8 +341,8 @@ class CircularWheelPainter extends CustomPainter {
       ringRadius: radii[5] * 0.72,
       numbers: ['18', '19', '20', '21', '22', '23'],
       fontSize: size.width * 0.032,
-      normalColor: const Color(0xFF789DA0),
-      selectedColor: const Color(0xFF101C1C),
+      normalColor: AppColors.ringSoftBlue,
+      selectedColor: AppColors.ringDark,
       selectedNumbers: ['20'],
     );
   }

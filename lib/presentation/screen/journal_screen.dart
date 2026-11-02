@@ -25,22 +25,20 @@ class JournalScreen extends StatelessWidget {
               );
             }
 
-            return SingleChildScrollView(
+            return CustomScrollView(
               physics: const BouncingScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // 1. Header & Book Display Area with Linear Soft Ambient Blend
-                  Container(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Container(
                     width: double.infinity,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Color(0xFFE8F3F5), Color(0xFFFAFBFD)],
+                        colors: [AppColors.journalHeaderBlue, AppColors.lightBackground],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                       ),
                     ),
-                    padding: const EdgeInsets.only(top: 50, bottom: 20),
+                    padding: const EdgeInsets.only(top: 60, bottom: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -52,7 +50,7 @@ class JournalScreen extends StatelessWidget {
                               Text(
                                 'Your Journal',
                                 style: TextStyle(
-                                  color: Color(0xFF021B22),
+                                  color: AppColors.ink,
                                   fontSize: 26,
                                   fontWeight: FontWeight.bold,
                                   letterSpacing: 0.2,
@@ -62,20 +60,19 @@ class JournalScreen extends StatelessWidget {
                               Text(
                                 'A Space To Be You',
                                 style: TextStyle(
-                                  color: Color(0xFF000000),
+                                  color: AppColors.black,
                                   fontSize: 14,
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 24),
                         Center(
                           child: SvgPicture.asset(
                             'assets/svg/book.svg',
-                            width: MediaQuery.of(context).size.width,
-                            height:  MediaQuery.of(context).size.width,
-                            fit: BoxFit.contain,
+                            width: 120,
+                            height: 120,
                             alignment: Alignment.center,
                           ),
                         ), // Centered Book Render Wireframe
@@ -83,11 +80,15 @@ class JournalScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
 
-                  // 2. Month Selector Horizontal Axis Scroller
-                  SizedBox(
+                // 2. Month Selector Horizontal Axis Scroller
+                SliverToBoxAdapter(
+                  child: SizedBox(
                     height: 35,
                     child: ListView.builder(
+                      primary: false,
+                      physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       itemCount: state.months.length,
@@ -99,14 +100,14 @@ class JournalScreen extends StatelessWidget {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: isSelected
-                                ? const Color(0xFF144750)
-                                : const Color(0xFFFEFDF8), //0xFFE7E5DB
+                                ? AppColors.deepTeal
+                                : AppColors.journalChip, //0xFFE7E5DB
                             borderRadius: BorderRadius.circular(20),
 
                             border: Border.all(
                               color: isSelected
-                                  ? const Color(0xFF0F4D5C)
-                                  : const Color(0xFFE7E5DB),
+                                  ? AppColors.journalBorder
+                                  : AppColors.beigeBorder,
                             ),
                           ),
                           margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -114,8 +115,8 @@ class JournalScreen extends StatelessWidget {
                             month,
                             style: TextStyle(
                               color: isSelected
-                                  ? Colors.white
-                                  : const Color(0xFF000000),
+                                  ? AppColors.textWhite
+                                  : AppColors.black,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -123,15 +124,17 @@ class JournalScreen extends StatelessWidget {
                       },
                     ),
                   ),
+                ),
 
-                  const SizedBox(height: 20),
-                  Row(
+                const SliverToBoxAdapter(child: SizedBox(height: 20)),
+                SliverToBoxAdapter(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(child: LuckNumberCard.leftLineWidget()),
                       const SizedBox(width: 4),
-                      LuckNumberCard.dot(3, Color(0xFF27828E)),
+                      LuckNumberCard.dot(3, AppColors.luckyTeal),
                       const SizedBox(width: 6),
                       Flexible(
                         child: Text(
@@ -145,16 +148,18 @@ class JournalScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 6),
-                      LuckNumberCard.dot(3, Color(0xFF27828E)),
+                      LuckNumberCard.dot(3, AppColors.luckyTeal),
                       const SizedBox(width: 4),
                       Expanded(child: LuckNumberCard.RightLineWidget()),
                     ],
                   ),
+                ),
 
-                  const SizedBox(height: 16),
+                const SliverToBoxAdapter(child: SizedBox(height: 16)),
 
-                  // 3. Section Action Header
-                  Padding(
+                // 3. Section Action Header
+                SliverToBoxAdapter(
+                  child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 24.0,
                       vertical: 8,
@@ -165,7 +170,7 @@ class JournalScreen extends StatelessWidget {
                         const Text(
                           'Recent Entries',
                           style: TextStyle(
-                            color: Color(0xFF000000),
+                            color: AppColors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -175,12 +180,12 @@ class JournalScreen extends StatelessWidget {
                           icon: const Icon(
                             Icons.add,
                             size: 18,
-                            color: Color(0xFF1D7E90),
+                            color: AppColors.journalTeal,
                           ),
                           label: const Text(
                             'Add Entry',
                             style: TextStyle(
-                              color: Color(0xFF1D7E90),
+                              color: AppColors.journalTeal,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -188,24 +193,24 @@ class JournalScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
 
-                  // 4. Vertical Ledger Entry List
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 8,
-                    ),
+                // 4. Vertical Ledger Entry List
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 8,
+                  ),
+                  sliver: SliverList.builder(
                     itemCount: state.entries.length,
                     itemBuilder: (context, index) {
                       final entry = state.entries[index];
                       return _buildJournalListItem(entry);
                     },
                   ),
-                  const SizedBox(height: 40),
-                ],
-              ),
+                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 40)),
+              ],
             );
           },
         ),
@@ -222,14 +227,14 @@ class JournalScreen extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFFF4F4F4), Color(0xFFB8E2E2)],
+          colors: [AppColors.entryGray, AppColors.entryAqua],
           begin: Alignment.centerLeft,
           end: Alignment.bottomRight,
         ),
-        color: const Color(0xFFB8E2E2).withOpacity(0.5),
+        color: AppColors.entryAqua.withOpacity(0.5),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: const Color(0xFFD0E2E5).withOpacity(0.4),
+          color: AppColors.entryBorder.withOpacity(0.4),
           width: 1,
         ),
       ),
@@ -247,7 +252,7 @@ class JournalScreen extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF298EA0),
+                    color: AppColors.entryDateTeal,
                   ),
                 ),
                 Text(
@@ -255,14 +260,14 @@ class JournalScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF000000),
+                    color: AppColors.black,
                   ),
                 ),
                 Text(
                   entry.weekdayStr,
                   style: const TextStyle(
                     fontSize: 11,
-                    color: Color(0xFF000000),
+                    color: AppColors.black,
                   ),
                 ),
               ],
@@ -270,7 +275,7 @@ class JournalScreen extends StatelessWidget {
           ),
           const SizedBox(width: 12),
           // Vertical Accent Line separator matching interface requirements
-          Container(width: 1, height: 75, color: Colors.black12),
+          Container(width: 1, height: 75, color: AppColors.black12),
           const SizedBox(width: 16),
           // Core Content Context
           Expanded(
@@ -286,13 +291,13 @@ class JournalScreen extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF021B22),
+                          color: AppColors.ink,
                         ),
                       ),
                     ),
                     const Icon(
                       Icons.chevron_right,
-                      color: Colors.black26,
+                      color: AppColors.black26,
                       size: 20,
                     ),
                   ],
@@ -302,7 +307,7 @@ class JournalScreen extends StatelessWidget {
                   entry.description,
                   style: const TextStyle(
                     fontSize: 12,
-                    color: Colors.black54,
+                    color: AppColors.black54,
                     height: 1.4,
                   ),
                   maxLines: 2,
@@ -313,7 +318,7 @@ class JournalScreen extends StatelessWidget {
                   entry.timeStr,
                   style: const TextStyle(
                     fontSize: 10,
-                    color: Colors.black38,
+                    color: AppColors.black38,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

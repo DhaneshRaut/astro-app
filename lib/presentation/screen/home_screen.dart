@@ -24,11 +24,11 @@ class HomeScreen extends StatelessWidget {
         }
 
         return Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: AppColors.transparent,
           body: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(0xff144750), Color(0xff081C20)],
+                colors: [AppColors.deepTeal, AppColors.darkestTeal],
                 begin: Alignment.topLeft,
                 end: Alignment.center,
               ),
@@ -52,15 +52,15 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Good Evening,",
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        style: TextStyle(color: AppColors.textWhite, fontSize: 12),
                       ),
                       Text(
                         "Saniya",
-                        style: TextStyle(color: Colors.white, fontSize: 26),
+                        style: TextStyle(color: AppColors.textWhite, fontSize: 26),
                       ),
                       Text(
                         "Air • Mutable • Mercury",
-                        style: TextStyle(color: Colors.white, fontSize: 10),
+                        style: TextStyle(color: AppColors.textWhite, fontSize: 10),
                       ),
                     ],
                   ),
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.15),
+                      AppColors.textWhite.withOpacity(0.15),
                       BlendMode.srcIn,
                     ),
                   ),
@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.15),
+                      AppColors.textWhite.withOpacity(0.15),
                       BlendMode.srcIn,
                     ),
                   ),
@@ -101,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.15), //done
+                      AppColors.textWhite.withOpacity(0.15), //done
                       BlendMode.srcIn,
                     ),
                   ),
@@ -115,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.15),
+                      AppColors.textWhite.withOpacity(0.15),
                       BlendMode.srcIn,
                     ),
                   ),
@@ -128,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.15),
+                      AppColors.textWhite.withOpacity(0.15),
                       BlendMode.srcIn,
                     ),
                   ),
@@ -143,7 +143,7 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0XFF20707E)),
-                      color: Colors.white,
+                      color: AppColors.textWhite,
                       shape: BoxShape.circle, // Makes it round
                     ),
                     child: Center(
@@ -152,13 +152,13 @@ class HomeScreen extends StatelessWidget {
                         width: 20,
                         height: 20,
                          fit: BoxFit.cover,
-                                               color: Color(0xff144750),
+                                               color: AppColors.deepTeal,
                       ),
 
                       //  Icon(
                       //   Icons.person,
                       //   size: 20,
-                      //   color: Color(0xff144750),
+                      //   color: AppColors.deepTeal,
                       // ),
                     ),
                   ),
@@ -170,7 +170,7 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0XFF20707E)),
-                      color: Colors.white,
+                      color: AppColors.textWhite,
                       shape: BoxShape.circle, // Makes it round
                     ),
                     child: Center(
@@ -179,7 +179,7 @@ class HomeScreen extends StatelessWidget {
                         width: 20,
                         height: 20,
                         fit: BoxFit.cover,
-                                               color: Color(0xff144750),
+                                               color: AppColors.deepTeal,
 
                       ),
                     ),
@@ -197,7 +197,7 @@ class HomeScreen extends StatelessWidget {
                   builder: (context, scrollController) {
                     return Container(
                       decoration: const BoxDecoration(
-                        color: Color(0xFFFFFFFF),
+                        color: AppColors.textWhite,
                         borderRadius: BorderRadius.vertical(
                           top: Radius.circular(28),
                         ),
@@ -219,8 +219,9 @@ class HomeScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(
                                   colors: [
-                                    Color(0xffE9F3F5),
-                                    Color(0xFFFEF2C2),
+                                    AppColors.paleBlue,
+                                    AppColors.lemonYellow,
+                                    // AppColors.lemonYellow,
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -254,7 +255,7 @@ class HomeScreen extends StatelessWidget {
                                         const Text(
                                           'Let your intentions guide\nyour journey.',
                                           style: TextStyle(
-                                            color: Color(0xFF595959),
+                                            color: AppColors.mutedGray,
                                             fontSize: 14,
                                             height: 1.4,
                                           ),
@@ -460,14 +461,14 @@ class AstrologicalWheelPainter extends CustomPainter {
       {
         'radius': 78.0,
         'width': 22.0,
-        'color':Color(0xFF84BAC4),
+        'color':AppColors.softAqua,
         'start': 0.6,
         'sweep': 0.8,
       },
       {
         'radius': 46.0,
         'width': 18.0,
-        'color':Color(0xFFA1D9D9),
+        'color':AppColors.lightAqua,
         'start': 0.5,
         'sweep': 0.9,
       },

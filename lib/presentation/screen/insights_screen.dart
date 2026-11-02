@@ -1,3 +1,4 @@
+import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:astrologer_app/presentation/insights_cubit/insights_cubit.dart';
 import 'package:astrologer_app/presentation/insights_cubit/insights_state.dart';
 import 'package:astrologer_app/presentation/screen/widgets/resusable_widget.dart';
@@ -13,12 +14,12 @@ class InsightsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => InsightsCubit()..loadInsightsData(),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFAFBFD),
+        backgroundColor: AppColors.lightBackground,
         body: BlocBuilder<InsightsCubit, InsightsState>(
           builder: (context, state) {
             if (state is! InsightsLoaded) {
               return const Center(
-                child: CircularProgressIndicator(color: Color(0xFF4FA0B5)),
+                child: CircularProgressIndicator(color: AppColors.accentTeal),
               );
             }
 
@@ -36,16 +37,16 @@ class InsightsScreen extends StatelessWidget {
                     
                    
                       children: [
-                        LuckNumberCard.dot(3, Color(0xff1c6370)),
+                        LuckNumberCard.dot(3, AppColors.tealBlue),
                         SizedBox(width: 4),
-                        LuckNumberCard.dot(5, Color(0xff1c6370)),
+                        LuckNumberCard.dot(5, AppColors.tealBlue),
                         SizedBox(width: 4),
                     
                         const Center(
                           child: Text(
                             '✦',
                             style: TextStyle(
-                              color: Color(0xff1c6370),
+                              color: AppColors.tealBlue,
                               fontSize: 12,
                             ),
                           ),
@@ -54,15 +55,15 @@ class InsightsScreen extends StatelessWidget {
                     //        const Center(
                     //   child: Text(
                     //     '✦ ─── ✦',
-                    //     style: TextStyle(color: Colors.black12, fontSize: 12),
+                    //     style: TextStyle(color: AppColors.black12, fontSize: 12),
                     //   ),
                     // ),
                         SizedBox(width: 4),
                     
-                        LuckNumberCard.dot(5, Color(0xff1c6370)),
+                        LuckNumberCard.dot(5, AppColors.tealBlue),
                         SizedBox(width: 4),
                     
-                        LuckNumberCard.dot(3, Color(0xff1c6370)),
+                        LuckNumberCard.dot(3, AppColors.tealBlue),
                       ],
                     ),
                   ),
@@ -90,7 +91,7 @@ class InsightsScreen extends StatelessWidget {
                             "assets/png/direction.png",
 
                             // "assets/svg/favorable_direction.svg",
-                            const Color(0xFF1B6375),
+                            AppColors.deepBlueTeal,
                             "North",
                           ),
                         ),
@@ -100,7 +101,7 @@ class InsightsScreen extends StatelessWidget {
                             "Lucky Color",
                             "assets/png/lucky_color.png",
 
-                            const Color(0xFFE91E63),
+                            AppColors.pink,
                             "Pink",
                           ),
                         ),
@@ -161,8 +162,8 @@ class InsightsScreen extends StatelessWidget {
                   letterSpacing: 0.3,
                   // Selected item gets high contrast teal; unselected gets a soft slate-grey
                   color: isSelected
-                      ? const Color(0xFF144750)
-                      : const Color(0xFF728488),
+                      ? AppColors.deepTeal
+                      : AppColors.mutedBlueGray,
                 ),
               ),
               const SizedBox(height: 6),
@@ -178,15 +179,15 @@ class InsightsScreen extends StatelessWidget {
                     Container(
                       width: 14,
                       height: 1.5,
-                      color: const Color(0xFF144750),
+                      color: AppColors.deepTeal,
                     ),
                     const SizedBox(width: 4),
-                    LuckNumberCard.dot(4, const Color(0xFF144750)),
+                    LuckNumberCard.dot(4, AppColors.deepTeal),
                     const SizedBox(width: 4),
                     Container(
                       width: 14,
                       height: 1.5,
-                      color: const Color(0xFF144750),
+                      color: AppColors.deepTeal,
                     ),
                   ],
                 ),
@@ -206,17 +207,17 @@ class InsightsScreen extends StatelessWidget {
               children: [
                 LuckNumberCard.dot(
                   1.5,
-                  const Color(0xFF9CB0B4),
+                  AppColors.paleBlueGray,
                 ), // Tiny outer dot
                 const SizedBox(width: 3),
                 LuckNumberCard.dot(
                   3.5,
-                  const Color(0xFF728488),
+                  AppColors.mutedBlueGray,
                 ), // Bigger core dot
                 const SizedBox(width: 3),
                 LuckNumberCard.dot(
                   1.5,
-                  const Color(0xFF9CB0B4),
+                  AppColors.paleBlueGray,
                 ), // Tiny outer dot
               ],
             ),
@@ -229,10 +230,10 @@ class InsightsScreen extends StatelessWidget {
   Widget _buildNatalChartSection(InsightsLoaded state, BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFFEF2C2).withOpacity(0.1),
+        color: AppColors.lemonYellow.withOpacity(0.1),
 
         gradient: LinearGradient(
-          colors: [Color(0xFFE9F3F8), Color(0xFFFEF2C2)],
+          colors: [AppColors.paleBlueTint, AppColors.lemonYellow],
           begin: AlignmentGeometry.topRight,
           end: AlignmentGeometry.centerEnd,
         ),
@@ -248,7 +249,7 @@ class InsightsScreen extends StatelessWidget {
             child: Text(
               'Insights',
               style: TextStyle(
-                color: Color(0xFF021B22),
+                color: AppColors.ink,
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
               ),
@@ -268,9 +269,9 @@ class InsightsScreen extends StatelessWidget {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Color(0xFFFEF2C2).withOpacity(0.1),
+                    color: AppColors.lemonYellow.withOpacity(0.1),
                     border: Border.all(
-                      color: Color(0xFF082E35).withOpacity(0.1),
+                      color: AppColors.shadowTeal.withOpacity(0.1),
                       width: 1,
                     ),
                   ),
@@ -283,12 +284,12 @@ class InsightsScreen extends StatelessWidget {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [
-                            const Color(0xFFFEF2C2).withOpacity(0.1),
-                            const Color(0xFFBEDDE2).withOpacity(0.4),
+                            AppColors.lemonYellow.withOpacity(0.1),
+                            AppColors.lightAquaTint.withOpacity(0.4),
                           ],
                         ),
                         border: Border.all(
-                          color: Color(0xFFBEDDE2).withOpacity(0.4),
+                          color: AppColors.lightAquaTint.withOpacity(0.4),
                           width: 1,
                         ),
                       ),
@@ -347,7 +348,7 @@ class InsightsScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF021B22),
+                          color: AppColors.ink,
                         ),
                       ),
                       const Text(
@@ -355,7 +356,7 @@ class InsightsScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF595959),
+                          color: AppColors.mutedGray,
                         ),
                       ),
                     ],
@@ -386,7 +387,7 @@ class InsightsScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFF021B22),
+                              color: AppColors.ink,
                             ),
                           ),
                           Text(
@@ -394,7 +395,7 @@ class InsightsScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xFF595959),
+                              color: AppColors.mutedGray,
                             ),
                           ),
                         ],
@@ -420,7 +421,7 @@ class InsightsScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFF021B22),
+                              color: AppColors.ink,
                             ),
                           ),
                           Text(
@@ -428,7 +429,7 @@ class InsightsScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xFF595959),
+                              color: AppColors.mutedGray,
                             ),
                           ),
                         ],
@@ -506,7 +507,7 @@ class InsightsScreen extends StatelessWidget {
       child: Text(
         title,
         style: const TextStyle(
-          color: Colors.black38,
+          color: AppColors.black38,
           fontSize: 12,
           fontWeight: FontWeight.w700,
           letterSpacing: 1.5,
@@ -520,9 +521,9 @@ class InsightsScreen extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
       height: 60, // Fixed height to match the compact banner design
       decoration: BoxDecoration(
-        color: const Color(0xFFE9F3F5), // Light blue-grey background
+        color: AppColors.paleBlue, // Light blue-grey background
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: const Color(0xFFD4E8EC), width: 1),
+        border: Border.all(color: AppColors.paleBlueBorder, width: 1),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
@@ -542,7 +543,7 @@ class InsightsScreen extends StatelessWidget {
                     text: TextSpan(
                       text: 'Focus of the day: ',
                       style: const TextStyle(
-                        color: Color(0xFF7A8B90), // Soft muted grey-blue text
+                        color: AppColors.grayBlue, // Soft muted grey-blue text
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
                       ),
@@ -576,7 +577,7 @@ class InsightsScreen extends StatelessWidget {
                               width: 44,
                               height: 20,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF268D9C),
+                                color: AppColors.mediumTeal,
                                 borderRadius: BorderRadius.all(
                                   Radius.elliptical(22, 10),
                                 ),
@@ -590,9 +591,9 @@ class InsightsScreen extends StatelessWidget {
                               width: 32,
                               height: 16,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: AppColors.textWhite,
                                 border: Border.all(
-                                  color: const Color(0xFF268D9C),
+                                  color: AppColors.mediumTeal,
                                   width: 1.5,
                                 ),
                                 borderRadius: BorderRadius.all(
@@ -608,7 +609,7 @@ class InsightsScreen extends StatelessWidget {
                               width: 20,
                               height: 12,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFBCE3EB).withOpacity(0.8),
+                                color: AppColors.paleAqua.withOpacity(0.8),
                                 borderRadius: BorderRadius.all(
                                   Radius.elliptical(10, 6),
                                 ),
@@ -635,9 +636,9 @@ class InsightsScreen extends StatelessWidget {
       // 1. Clip.antiAlias ensures the large background SVG doesn't bleed outside the rounded corners
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: const Color(0xFFFEFBEC),
+        color: AppColors.cream,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: const Color(0xFFFEF2C2), width: 1),
+        border: Border.all(color: AppColors.lemonYellow, width: 1),
       ),
       child: Stack(
         children: [
@@ -650,7 +651,7 @@ class InsightsScreen extends StatelessWidget {
               height: 170,
               // Made much larger to match the reference image
               // Optional: Add color/opacity here if your SVG doesn't have it built-in
-              // color: Colors.black.withOpacity(0.1),
+              // color: AppColors.black.withOpacity(0.1),
             ),
           ),
 
@@ -666,7 +667,7 @@ class InsightsScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16, // Increased from 16 to match image
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFF040E10),
+                    color: AppColors.nearBlack,
                   ),
                 ),
                 SizedBox(height: 16), // Increased spacing
@@ -696,7 +697,7 @@ class InsightsScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.textWhite,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -706,7 +707,7 @@ class InsightsScreen extends StatelessWidget {
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
-              color: Color(0xff040E10),
+              color: AppColors.nearBlack,
             ),
           ),
           Image.asset(
@@ -765,7 +766,7 @@ class InsightsScreen extends StatelessWidget {
             child: SvgPicture.asset(
               "assets/svg/fun_fact_cloud.svg",
               height: 40,
-              color: Colors.white.withOpacity(0.12),
+              color: AppColors.textWhite.withOpacity(0.12),
             ),
           ),
 
@@ -776,7 +777,7 @@ class InsightsScreen extends StatelessWidget {
             child: SvgPicture.asset(
               "assets/svg/fun_fact_cloud.svg",
               height: 40,
-              color: Colors.white.withOpacity(0.12),
+              color: AppColors.textWhite.withOpacity(0.12),
             ),
           ),
 
@@ -787,7 +788,7 @@ class InsightsScreen extends StatelessWidget {
             child: SvgPicture.asset(
               "assets/svg/fun_fact_cloud.svg",
               height: 40,
-              color: Colors.white.withOpacity(0.12),
+              color: AppColors.textWhite.withOpacity(0.12),
             ),
           ),
 
@@ -801,7 +802,7 @@ class InsightsScreen extends StatelessWidget {
                 Text(
                   'Fun Facts',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.textWhite,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -812,7 +813,7 @@ class InsightsScreen extends StatelessWidget {
                   'associated with confidence, creativity, warmth, and a natural '
                   'desire to shine.',
                   style: TextStyle(
-                    color: Colors.white70,
+                    color: AppColors.white70,
                     fontSize: 13,
                     height: 1.45,
                   ),
@@ -832,11 +833,11 @@ class InsightsScreen extends StatelessWidget {
             3 / 3, // You can tweak this to 5/4 if it looks closer to your image
         child: Container(
           decoration: BoxDecoration(
-            color: const Color(0xFFF3F8F9),
+            color: AppColors.iceWhite,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: AppColors.black.withOpacity(0.05),
                 blurRadius: 10,
                 spreadRadius: 2,
               ),
@@ -855,11 +856,11 @@ class InsightsScreen extends StatelessWidget {
                     height: 100,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xFFFEF4CE), // Edge blending into white
+                      color: AppColors.paleYellow, // Edge blending into white
 
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFFFEF4CE), // Pale yellow glow
+                          color: AppColors.paleYellow, // Pale yellow glow
                           blurRadius: 40,
                           spreadRadius: 10,
                         ),
@@ -872,7 +873,7 @@ class InsightsScreen extends StatelessWidget {
                           fontSize: 35,
 
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF7A7A7A), // Greyish brown
+                          color: AppColors.neutralGray, // Greyish brown
                         ),
                       ),
                     ),
@@ -935,7 +936,7 @@ class InsightsScreen extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 18, // Slightly larger
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: AppColors.black,
                           letterSpacing: -0.5,
                         ),
                       ),
@@ -944,7 +945,7 @@ class InsightsScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 12, // Slightly larger
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF27828E), // Teal color
+                          color: AppColors.luckyTeal, // Teal color
                         ),
                       ),
                       const SizedBox(height: 25),
@@ -960,7 +961,7 @@ class InsightsScreen extends StatelessWidget {
   }
 
   Widget RightLineWidget([Color? color]) {
-    final c = color ?? const Color(0xFF27828E);
+    final c = color ?? AppColors.luckyTeal;
     return Container(
       height: 2,
       decoration: BoxDecoration(
@@ -974,7 +975,7 @@ class InsightsScreen extends StatelessWidget {
   }
 
   Widget leftLineWidget([Color? color]) {
-    final c = color ?? const Color(0xFF27828E);
+    final c = color ?? AppColors.luckyTeal;
     return Container(
       height: 2,
       decoration: BoxDecoration(
@@ -1008,7 +1009,7 @@ class WavePainter extends CustomPainter {
     final paint = Paint()..style = PaintingStyle.fill;
 
     // Draw the lighter, back wave
-    paint.color = const Color(0xFFD6EAEF);
+    paint.color = AppColors.lightBlue;
     final backPath = Path()
       ..moveTo(size.width * 0.6, size.height)
       ..quadraticBezierTo(
@@ -1022,7 +1023,7 @@ class WavePainter extends CustomPainter {
     canvas.drawPath(backPath, paint);
 
     // Draw the darker, front wave
-    paint.color = const Color(0xFFC4DFE6);
+    paint.color = AppColors.softBlue;
     final frontPath = Path()
       ..moveTo(size.width * 0.7, size.height)
       ..quadraticBezierTo(
@@ -1047,13 +1048,13 @@ class InsightsWheelPainter extends CustomPainter {
     final paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1
-      ..color = Colors.black12;
+      ..color = AppColors.black12;
     SvgPicture.asset(
       "assets/svg/insight_horoscope.svg",
       width: 240,
       height: 240,
       fit: BoxFit.contain,
-      colorFilter: const ColorFilter.mode(Colors.amber, BlendMode.srcIn),
+      colorFilter: const ColorFilter.mode(AppColors.amber, BlendMode.srcIn),
     );
     canvas.drawCircle(center, size.width / 2, paint);
     canvas.drawCircle(center, size.width / 3, paint);

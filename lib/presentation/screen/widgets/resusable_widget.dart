@@ -1,3 +1,4 @@
+import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:flutter/material.dart';
 
 class LuckNumberCard{
@@ -8,11 +9,11 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xffFEF2C2), Color(0xFFFFFFFF)],
+          colors: [AppColors.lemonYellow, AppColors.textWhite],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
-        color: const Color(0xFFFCF8DC), // Light yellow background
+        color: AppColors.cardCream, // Light yellow background
         borderRadius: BorderRadius.circular(24),
       ),
       child: Padding(
@@ -26,7 +27,7 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
               title,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                color: Color(0xFF135B6B),
+                color: AppColors.strongTeal,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -69,7 +70,7 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
             const Text(
               "Today's guidance:",
               style: TextStyle(
-                color: Color(0xFF1E1E1E),
+                color: AppColors.darkGray,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -79,7 +80,7 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
               fact.isNotEmpty ? fact : "Stay open to unexpected opportunities. Trust your instincts, explore something new, and avoid overthinking your next move.",
               // fact,
               style: const TextStyle(
-                color: Color(0xFF4A4A4A),
+                color: AppColors.mediumGray,
                 fontSize: 15,
                 height: 1.5,
               ),
@@ -99,7 +100,7 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
   }
 
   static   Widget leftLineWidget([Color? color]) {
-    final c = color ?? const Color(0xFF27828E);
+    final c = color ?? AppColors.luckyTeal;
     return Container(
       height: 2,
       decoration: BoxDecoration(
@@ -113,7 +114,7 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
   }
 
    static Widget RightLineWidget([Color? color]) {
-    final c = color ?? const Color(0xFF27828E);
+    final c = color ?? AppColors.luckyTeal;
     return Container(
       height: 2,
       decoration: BoxDecoration(
