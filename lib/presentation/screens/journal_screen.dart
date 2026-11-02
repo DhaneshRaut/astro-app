@@ -14,9 +14,7 @@ class JournalScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => JournalCubit()..loadJournalData(),
       child: Scaffold(
-        backgroundColor: const Color(
-          0xFFFAFBFD,
-        ), 
+        backgroundColor: const Color(0xFFFAFBFD),
         body: BlocBuilder<JournalCubit, JournalState>(
           builder: (context, state) {
             if (state is! JournalLoaded) {
@@ -86,14 +84,12 @@ class JournalScreen extends StatelessWidget {
                               alignment: Alignment.center,
                             ),
                           ),
-                        ), 
-                        
+                        ),
                       ],
                     ),
                   ),
                 ),
 
-                
                 SliverToBoxAdapter(
                   child: SizedBox(
                     height: 35,
@@ -112,7 +108,7 @@ class JournalScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: isSelected
                                 ? AppColors.deepTeal
-                                : AppColors.journalChip, 
+                                : AppColors.journalChip,
                             borderRadius: BorderRadius.circular(20),
 
                             border: Border.all(
@@ -170,47 +166,46 @@ class JournalScreen extends StatelessWidget {
 
                 const SliverToBoxAdapter(child: SizedBox(height: 16)),
 
-                
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24.0,
-                    vertical: 8,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Recent Entries',
-                        style: TextStyle(
-                          fontFamily: "Geist",
-                          color: AppColors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      TextButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.add,
-                          size: 18,
-                          color: AppColors.journalTeal,
-                        ),
-                        label: const Text(
-                          'Add Entry',
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24.0,
+                      vertical: 8,
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Recent Entries',
                           style: TextStyle(
                             fontFamily: "Geist",
-                
-                            color: AppColors.journalTeal,
-                            fontWeight: FontWeight.w500,
+                            color: AppColors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                      ),
-                    ],
+                        TextButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.add,
+                            size: 18,
+                            color: AppColors.journalTeal,
+                          ),
+                          label: const Text(
+                            'Add Entry',
+                            style: TextStyle(
+                              fontFamily: "Geist",
+                              color: AppColors.journalTeal,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
 
-                
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
@@ -292,10 +287,10 @@ class JournalScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          
+
           Container(width: 1, height: 75, color: AppColors.black12),
           const SizedBox(width: 16),
-          
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
