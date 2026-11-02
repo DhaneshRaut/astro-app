@@ -19,7 +19,7 @@ class AstroApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Astro Tracker',
         theme: AppTheme.lightTheme,
-        home: const StartupScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

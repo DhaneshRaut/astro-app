@@ -5,14 +5,14 @@ import 'package:astrologer_app/presentation/screens/main_layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class StartupScreen extends StatefulWidget {
-  const StartupScreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<StartupScreen> createState() => _StartupScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _StartupScreenState extends State<StartupScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   Timer? _navigationTimer;
 
   @override
