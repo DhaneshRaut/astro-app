@@ -85,29 +85,78 @@ flutter:
   fonts:
     - family: Geist
       fonts:
-        - asset: assets/fonts/Geist-Black.ttf
-        - asset: assets/fonts/Geist-BlackItalic.ttf
-        - asset: assets/fonts/Geist-Bold.ttf
-        - asset: assets/fonts/Geist-BoldItalic.ttf
-        - asset: assets/fonts/Geist-Italic.ttf
-        - asset: assets/fonts/Geist-Light.ttf
-        - asset: assets/fonts/Geist-Regular.ttf
-        - asset: assets/fonts/Geist-SemiBold.ttf
         - asset: assets/fonts/Geist-Thin.ttf
-
-          # style: italic
+          weight: 100
+        - asset: assets/fonts/Geist-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Geist-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Geist-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Geist-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Geist-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Geist-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Geist-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Geist-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Geist-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Geist-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/Geist-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Geist-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Geist-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Geist-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Geist-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Geist-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Geist-BlackItalic.ttf
+          weight: 900
+          style: italic
     - family: Satoshi
       fonts:
-        - asset: assets/fonts/Satoshi-Regular.otf
-        - asset: assets/fonts/Geist-Black.ttf
-        - asset: assets/fonts/Satoshi-Black.otf
-        - asset: assets/fonts/Satoshi-Bold.otf
-        - asset: assets/fonts/Satoshi-Italic.otf
+        - asset: assets/fonts/Satoshi-Light.otf
+          weight: 300
         - asset: assets/fonts/Satoshi-LightItalic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Satoshi-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Satoshi-Italic.otf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Satoshi-Medium.otf
+          weight: 500
         - asset: assets/fonts/Satoshi-MediumItalic.otf
-
-        
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Satoshi-Bold.otf
           weight: 700
+        - asset: assets/fonts/Satoshi-BoldItalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Satoshi-Black.otf
+          weight: 900
+        - asset: assets/fonts/Satoshi-BlackItalic.otf
+          weight: 900
+          style: italic
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

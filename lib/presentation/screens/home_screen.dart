@@ -2,9 +2,9 @@ import 'dart:math' as math;
 
 import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:astrologer_app/presentation/astro_cubit/astro_cubit.dart';
-import 'package:astrologer_app/presentation/astro_cubit/state_cubit.dart';
-import 'package:astrologer_app/presentation/screen/natal.dart';
-import 'package:astrologer_app/presentation/screen/widgets/resusable_widget.dart';
+import 'package:astrologer_app/presentation/astro_cubit/astro_state.dart';
+import 'package:astrologer_app/presentation/screens/natal_chart_screen.dart';
+import 'package:astrologer_app/presentation/widgets/luck_number_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                // BACKGROUND CIRCULAR WHEEL
+                
                 Positioned.fill(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 100),
@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                // TOP PROFILE INFORMATION
+                
                 const Positioned(
                   left: 20,
                   top: 60,
@@ -51,26 +51,35 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Good Evening,",
-                        style: TextStyle(color: AppColors.textWhite, fontSize: 12),
+                        style: TextStyle(
+                          color: AppColors.textWhite,
+                          fontSize: 12,
+                        ),
                       ),
                       Text(
                         "Saniya",
-                        style: TextStyle(color: AppColors.textWhite, fontSize: 26),
+                        style: TextStyle(
+                          color: AppColors.textWhite,
+                          fontSize: 26,
+                        ),
                       ),
                       Text(
                         "Air • Mutable • Mercury",
-                        style: TextStyle(color: AppColors.textWhite, fontSize: 10),
+                        style: TextStyle(
+                          color: AppColors.textWhite,
+                          fontSize: 10,
+                        ),
                       ),
                     ],
                   ),
                 ),
 
-                // === FIXED BACKGROUND SYMBOLS ===
+                
                 Positioned(
                   right: 240,
                   top: 170,
                   child: SvgPicture.asset(
-                    "assets/svg/symbol_two.svg", // assets/svg/symbol_three.svg
+                    "assets/svg/symbol_two.svg", 
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
@@ -83,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                   left: 45,
                   top: 250,
                   child: SvgPicture.asset(
-                    "assets/svg/symbol_three.svg", //done
+                    "assets/svg/symbol_three.svg", 
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
@@ -93,14 +102,14 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 20,
+                  left: 40,
                   top: 140,
                   child: SvgPicture.asset(
                     "assets/svg/symbol_one.svg",
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
-                      AppColors.textWhite.withOpacity(0.15), //done
+                      AppColors.textWhite.withOpacity(0.15), 
                       BlendMode.srcIn,
                     ),
                   ),
@@ -132,9 +141,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // ================================
+                
 
-                // PROFILE ICON (Fixed to be circular like the design)
+                
                 Positioned(
                   right: 70,
                   top: 60,
@@ -143,22 +152,18 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0XFF20707E)),
                       color: AppColors.textWhite,
-                      shape: BoxShape.circle, // Makes it round
+                      shape: BoxShape.circle, 
                     ),
                     child: Center(
                       child: SvgPicture.asset(
                         "assets/svg/profile.svg",
                         width: 20,
                         height: 20,
-                         fit: BoxFit.cover,
-                                               color: AppColors.deepTeal,
+                        fit: BoxFit.cover,
+                        color: AppColors.deepTeal,
                       ),
 
-                      //  Icon(
-                      //   Icons.person,
-                      //   size: 20,
-                      //   color: AppColors.deepTeal,
-                      // ),
+                
                     ),
                   ),
                 ),
@@ -170,7 +175,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0XFF20707E)),
                       color: AppColors.textWhite,
-                      shape: BoxShape.circle, // Makes it round
+                      shape: BoxShape.circle, 
                     ),
                     child: Center(
                       child: SvgPicture.asset(
@@ -178,14 +183,13 @@ class HomeScreen extends StatelessWidget {
                         width: 20,
                         height: 20,
                         fit: BoxFit.cover,
-                                               color: AppColors.deepTeal,
-
+                        color: AppColors.deepTeal,
                       ),
                     ),
                   ),
                 ),
 
-                // DRAGGABLE BOTTOM SHEET
+                
                 DraggableScrollableSheet(
                   initialChildSize: 0.5,
                   minChildSize: 0.5,
@@ -209,7 +213,7 @@ class HomeScreen extends StatelessWidget {
                           vertical: 12,
                         ),
                         children: [
-                          // DRAG HANDLE
+                          
                           _buildSectionHeader("GOAL'S"),
                           SizedBox(height: 10),
                           ClipRRect(
@@ -220,7 +224,7 @@ class HomeScreen extends StatelessWidget {
                                   colors: [
                                     AppColors.paleBlue,
                                     AppColors.lemonYellow,
-                                    // AppColors.lemonYellow,
+                                    
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -245,6 +249,7 @@ class HomeScreen extends StatelessWidget {
                                         const Text(
                                           'No Goals Yet',
                                           style: TextStyle(
+                                            fontFamily: "Geist",
                                             color: AppColors.background,
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
@@ -254,8 +259,10 @@ class HomeScreen extends StatelessWidget {
                                         const Text(
                                           'Let your intentions guide\nyour journey.',
                                           style: TextStyle(
+                                            fontFamily: "Satoshi",
                                             color: AppColors.mutedGray,
                                             fontSize: 14,
+                                            fontWeight: FontWeight.w400,
                                             height: 1.4,
                                           ),
                                         ),
@@ -273,11 +280,13 @@ class HomeScreen extends StatelessWidget {
                                                 borderRadius:
                                                     BorderRadius.circular(25),
                                               ),
-                                              // padding: const EdgeInsets.symmetric(vertical: 14),
+                                              
                                             ),
                                             child: const Text(
                                               '+ Create Your Goal',
                                               style: TextStyle(
+                                                fontFamily: "Geist",
+
                                                 color: AppColors.textWhite,
                                                 fontSize: 15,
                                               ),
@@ -321,6 +330,8 @@ class HomeScreen extends StatelessWidget {
                                       style: const TextStyle(
                                         color: AppColors.textWhite,
                                         fontSize: 22,
+                                              fontFamily: "Satoshi",
+
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -328,6 +339,8 @@ class HomeScreen extends StatelessWidget {
                                     Text(
                                       state.dateStr,
                                       style: const TextStyle(
+                                      fontFamily: "Satoshi",
+
                                         color: AppColors.textMuted,
                                         fontSize: 12,
                                       ),
@@ -336,6 +349,8 @@ class HomeScreen extends StatelessWidget {
                                     const Text(
                                       'Your natural curiosity is your strength today. Stay open to new ideas, but give yourself time to focus before making decisions.',
                                       style: TextStyle(
+                                       fontFamily: "Satoshi",
+
                                         color: AppColors.textMuted,
                                         fontSize: 14,
                                         height: 1.4,
@@ -375,7 +390,7 @@ class HomeScreen extends StatelessWidget {
 
                           SizedBox(height: 10),
 
-                          LuckNumberCard.buildNumerologyCard(
+                          CustomWidgets.numerologyCard(
                             "Stay open to unexpected opportunities. Trust your instincts, explore something new, and avoid overthinking your next move.",
                           ),
 
@@ -408,7 +423,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // Common Header Helper Element
+  
   Widget _buildSectionHeader(String title) {
     return Padding(
       padding: const EdgeInsets.only(left: 10, top: 10, bottom: 0.0),
@@ -417,16 +432,17 @@ class HomeScreen extends StatelessWidget {
         style: const TextStyle(
           color: AppColors.textMuted,
           fontSize: 12,
+          fontFamily: "Geist",
+
           fontWeight: FontWeight.w700,
           letterSpacing: 1.4,
         ),
       ),
     );
   }
-
 }
 
-// Concentric Dial Painting Processor Engine
+
 class AstrologicalWheelPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -459,14 +475,14 @@ class AstrologicalWheelPainter extends CustomPainter {
       {
         'radius': 78.0,
         'width': 22.0,
-        'color':AppColors.softAqua,
+        'color': AppColors.softAqua,
         'start': 0.6,
         'sweep': 0.8,
       },
       {
         'radius': 46.0,
         'width': 18.0,
-        'color':AppColors.lightAqua,
+        'color': AppColors.lightAqua,
         'start': 0.5,
         'sweep': 0.9,
       },

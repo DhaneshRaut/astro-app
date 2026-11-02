@@ -1,7 +1,7 @@
 import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:astrologer_app/presentation/journal_cubit/journal_cubit.dart';
 import 'package:astrologer_app/presentation/journal_cubit/journal_state.dart';
-import 'package:astrologer_app/presentation/screen/widgets/resusable_widget.dart';
+import 'package:astrologer_app/presentation/widgets/luck_number_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,7 +16,7 @@ class JournalScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: const Color(
           0xFFFAFBFD,
-        ), // Light ambient cream/white layout background
+        ), 
         body: BlocBuilder<JournalCubit, JournalState>(
           builder: (context, state) {
             if (state is! JournalLoaded) {
@@ -33,7 +33,10 @@ class JournalScreen extends StatelessWidget {
                     width: double.infinity,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [AppColors.journalHeaderBlue, AppColors.lightBackground],
+                        colors: [
+                          AppColors.journalHeaderBlue,
+                          AppColors.lightBackground,
+                        ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                       ),
@@ -52,6 +55,8 @@ class JournalScreen extends StatelessWidget {
                                 style: TextStyle(
                                   color: AppColors.ink,
                                   fontSize: 26,
+                                  fontFamily: "Geist",
+
                                   fontWeight: FontWeight.bold,
                                   letterSpacing: 0.2,
                                 ),
@@ -60,8 +65,11 @@ class JournalScreen extends StatelessWidget {
                               Text(
                                 'A Space To Be You',
                                 style: TextStyle(
+                                  fontFamily: "Satoshi",
+
                                   color: AppColors.black,
                                   fontSize: 14,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ],
@@ -69,20 +77,23 @@ class JournalScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 24),
                         Center(
-                          child: SvgPicture.asset(
-                            'assets/svg/book.svg',
+                          child: SizedBox(
                             width: 120,
                             height: 120,
-                            alignment: Alignment.center,
+                            child: SvgPicture.asset(
+                              'assets/svg/book.svg',
+                              fit: BoxFit.contain,
+                              alignment: Alignment.center,
+                            ),
                           ),
-                        ), // Centered Book Render Wireframe
-                        // Centered Book Render Wireframe
+                        ), 
+                        
                       ],
                     ),
                   ),
                 ),
 
-                // 2. Month Selector Horizontal Axis Scroller
+                
                 SliverToBoxAdapter(
                   child: SizedBox(
                     height: 35,
@@ -101,7 +112,7 @@ class JournalScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: isSelected
                                 ? AppColors.deepTeal
-                                : AppColors.journalChip, //0xFFE7E5DB
+                                : AppColors.journalChip, 
                             borderRadius: BorderRadius.circular(20),
 
                             border: Border.all(
@@ -114,6 +125,8 @@ class JournalScreen extends StatelessWidget {
                           child: Text(
                             month,
                             style: TextStyle(
+                              fontFamily: "Geist",
+
                               color: isSelected
                                   ? AppColors.textWhite
                                   : AppColors.black,
@@ -132,9 +145,9 @@ class JournalScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Expanded(child: LuckNumberCard.leftLineWidget()),
+                      Expanded(child: CustomWidgets.leftLine()),
                       const SizedBox(width: 4),
-                      LuckNumberCard.dot(3, AppColors.luckyTeal),
+                      CustomWidgets.dot(3, AppColors.luckyTeal),
                       const SizedBox(width: 6),
                       Flexible(
                         child: Text(
@@ -148,54 +161,56 @@ class JournalScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 6),
-                      LuckNumberCard.dot(3, AppColors.luckyTeal),
+                      CustomWidgets.dot(3, AppColors.luckyTeal),
                       const SizedBox(width: 4),
-                      Expanded(child: LuckNumberCard.RightLineWidget()),
+                      Expanded(child: CustomWidgets.rightLine()),
                     ],
                   ),
                 ),
 
                 const SliverToBoxAdapter(child: SizedBox(height: 16)),
 
-                // 3. Section Action Header
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24.0,
-                      vertical: 8,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Recent Entries',
+                
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24.0,
+                    vertical: 8,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Recent Entries',
+                        style: TextStyle(
+                          fontFamily: "Geist",
+                          color: AppColors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.add,
+                          size: 18,
+                          color: AppColors.journalTeal,
+                        ),
+                        label: const Text(
+                          'Add Entry',
                           style: TextStyle(
-                            color: AppColors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextButton.icon(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.add,
-                            size: 18,
+                            fontFamily: "Geist",
+                
                             color: AppColors.journalTeal,
-                          ),
-                          label: const Text(
-                            'Add Entry',
-                            style: TextStyle(
-                              color: AppColors.journalTeal,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
 
-                // 4. Vertical Ledger Entry List
+                
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
@@ -218,9 +233,6 @@ class JournalScreen extends StatelessWidget {
     );
   }
 
-  // Master Graphic Implementation wrapper for the detailed Notebook cover presentation
-
-  // Component Builder representing specific item element rows within ledger metrics
   Widget _buildJournalListItem(JournalEntry entry) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -241,7 +253,6 @@ class JournalScreen extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Left Date Stamp Segment Box Block
           SizedBox(
             width: 45,
             child: Column(
@@ -251,6 +262,8 @@ class JournalScreen extends StatelessWidget {
                   entry.dayNumber,
                   style: const TextStyle(
                     fontSize: 30,
+                    fontFamily: "Satoshi",
+
                     fontWeight: FontWeight.bold,
                     color: AppColors.entryDateTeal,
                   ),
@@ -259,6 +272,9 @@ class JournalScreen extends StatelessWidget {
                   entry.monthStr,
                   style: TextStyle(
                     fontSize: 20,
+
+                    fontFamily: "Satoshi",
+
                     fontWeight: FontWeight.bold,
                     color: AppColors.black,
                   ),
@@ -267,6 +283,8 @@ class JournalScreen extends StatelessWidget {
                   entry.weekdayStr,
                   style: const TextStyle(
                     fontSize: 11,
+                    fontFamily: "Satoshi",
+
                     color: AppColors.black,
                   ),
                 ),
@@ -274,10 +292,10 @@ class JournalScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          // Vertical Accent Line separator matching interface requirements
+          
           Container(width: 1, height: 75, color: AppColors.black12),
           const SizedBox(width: 16),
-          // Core Content Context
+          
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -290,6 +308,8 @@ class JournalScreen extends StatelessWidget {
                         entry.title,
                         style: const TextStyle(
                           fontSize: 15,
+                          fontFamily: "Satoshi",
+
                           fontWeight: FontWeight.bold,
                           color: AppColors.ink,
                         ),
@@ -307,6 +327,8 @@ class JournalScreen extends StatelessWidget {
                   entry.description,
                   style: const TextStyle(
                     fontSize: 12,
+                    fontFamily: "Satoshi",
+
                     color: AppColors.black54,
                     height: 1.4,
                   ),
@@ -318,6 +340,8 @@ class JournalScreen extends StatelessWidget {
                   entry.timeStr,
                   style: const TextStyle(
                     fontSize: 10,
+                    fontFamily: "Satoshi",
+
                     color: AppColors.black38,
                     fontWeight: FontWeight.w500,
                   ),

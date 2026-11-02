@@ -1,3 +1,4 @@
+
 abstract class AstroState {}
 
 class AstroInitial extends AstroState {}

@@ -1,11 +1,9 @@
 import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:flutter/material.dart';
 
-class LuckNumberCard{
-static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'}) {
+class CustomWidgets {
+  static Widget numerologyCard(String fact, {String title = 'Lucky Number'}) {
     return Container(
-      // margin: const EdgeInsets.symmetric(horizontal: 16),
-      // padding: const EdgeInsets.all(24),
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
@@ -13,35 +11,42 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
-        color: AppColors.cardCream, // Light yellow background
+        color: AppColors.cardCream, 
         borderRadius: BorderRadius.circular(24),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left:15.0 ,top: 15 ,bottom: 15 ,right: 15),
+        padding: const EdgeInsets.only(
+          left: 15.0,
+          top: 15,
+          bottom: 15,
+          right: 15,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // 1. Title
+            
             Text(
               title,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: AppColors.strongTeal,
-                fontSize: 22,
+                fontSize: 15,
+                fontFamily: "Satoshi",
+
                 fontWeight: FontWeight.bold,
               ),
             ),
-            
+
             const SizedBox(height: 20),
-        
-            // 2. Images (Sphere and Cube)
+
+            
             SizedBox(
               height: 220,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  // Cube Image (pedestal at the bottom)
+                  
                   Positioned(
                     bottom: 10,
                     child: Image.asset(
@@ -50,7 +55,7 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
                       fit: BoxFit.contain,
                     ),
                   ),
-                  // Sphere Image overlapping on top
+                  
                   Positioned(
                     top: 0,
                     left: 0,
@@ -65,11 +70,13 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
               ),
             ),
             const SizedBox(height: 20),
-        
-            // 3. Text Section
+
+            
             const Text(
               "Today's guidance:",
               style: TextStyle(
+                fontFamily: "Geist",
+
                 color: AppColors.darkGray,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -77,9 +84,13 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
             ),
             const SizedBox(height: 8),
             Text(
-              fact.isNotEmpty ? fact : "Stay open to unexpected opportunities. Trust your instincts, explore something new, and avoid overthinking your next move.",
-              // fact,
+              fact.isNotEmpty
+                  ? fact
+                  : "Stay open to unexpected opportunities. Trust your instincts, explore something new, and avoid overthinking your next move.",
+              
               style: const TextStyle(
+                fontFamily: "Geist",
+
                 color: AppColors.mediumGray,
                 fontSize: 15,
                 height: 1.5,
@@ -91,7 +102,7 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
     );
   }
 
-  static   Widget dot(double size, Color color) {
+  static Widget dot(double size, Color color) {
     return Container(
       width: size,
       height: size,
@@ -99,7 +110,7 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
     );
   }
 
-  static   Widget leftLineWidget([Color? color]) {
+  static Widget leftLine([Color? color]) {
     final c = color ?? AppColors.luckyTeal;
     return Container(
       height: 2,
@@ -113,7 +124,7 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
     );
   }
 
-   static Widget RightLineWidget([Color? color]) {
+  static Widget rightLine([Color? color]) {
     final c = color ?? AppColors.luckyTeal;
     return Container(
       height: 2,
@@ -127,5 +138,16 @@ static  Widget buildNumerologyCard(String fact, {String title = 'Lucky Number'})
     );
   }
 
-
+  static Widget dotGroup(Color color) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        dot(2.5, color),
+        const SizedBox(width: 3),
+        dot(5, color),
+        const SizedBox(width: 3),
+        dot(2.5, color),
+      ],
+    );
+  }
 }

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 
 
-class CircularWheelScreen extends StatelessWidget {
-  const CircularWheelScreen({super.key});
+class NatalChartScreen extends StatelessWidget {
+  const NatalChartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class CircularWheelScreen extends StatelessWidget {
         child:
          Stack(
           children: [
-            // BACKGROUND CIRCULAR WHEEL
+            
             Positioned.fill(
               child: Padding(
                 padding: const EdgeInsets.only(left: 100),
@@ -37,7 +37,7 @@ class CircularWheelScreen extends StatelessWidget {
               ),
             ),
         
-            // TOP PROFILE INFORMATION
+            
             const Positioned(
               left: 10,
               top: 60,
@@ -69,7 +69,7 @@ class CircularWheelScreen extends StatelessWidget {
               ),
             ),
         
-            // DRAGGABLE BOTTOM SHEET
+            
             DraggableScrollableSheet(
               initialChildSize: 0.5,
               minChildSize: 0.5,
@@ -99,7 +99,7 @@ class CircularWheelScreen extends StatelessWidget {
                       vertical: 12,
                     ),
                     children: [
-                      // DRAG HANDLE
+                      
                       Center(
                         child: Container(
                           height: 5,
@@ -135,7 +135,7 @@ class CircularWheelScreen extends StatelessWidget {
         
                       const SizedBox(height: 24),
         
-                      // SAMPLE CONTENT
+                      
                       _buildInfoCard(
                         "Life Path Number",
                         "Your journey is guided by creativity "
@@ -226,19 +226,19 @@ class CircularWheelPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Center of the wheel
+    
     final center = Offset(
       size.width * 0.93,
       size.height * 0.495,
     );
 
-    // Responsive outer radius
+    
     final radius = math.min(
       size.height * 0.53,
       size.width * 1.0,
     );
 
-    // Circle radius levels
+    
     final radii = [
       radius,
       radius * 0.77,
@@ -248,7 +248,7 @@ class CircularWheelPainter extends CustomPainter {
       radius * 0.19,
     ];
 
-    // Circle colors
+    
     final colors = [
       AppColors.cream,
       AppColors.lemonYellow,
@@ -258,7 +258,7 @@ class CircularWheelPainter extends CustomPainter {
       AppColors.paleCyan,
     ];
 
-    // Draw concentric circles
+    
     for (int i = 0; i < radii.length; i++) {
       final paint = Paint()
         ..color = colors[i]
@@ -272,9 +272,9 @@ class CircularWheelPainter extends CustomPainter {
       );
     }
 
-    // Draw numbers on each circular ring
+    
 
-    // Outer ring
+    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -286,7 +286,7 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['22'],
     );
 
-    // Second ring
+    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -298,7 +298,7 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['9'],
     );
 
-    // Third ring
+    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -310,7 +310,7 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['20'],
     );
 
-    // Fourth ring
+    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -322,7 +322,7 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['14'],
     );
 
-    // Fifth ring
+    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -334,7 +334,7 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['8'],
     );
 
-    // Inner ring
+    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -347,9 +347,9 @@ class CircularWheelPainter extends CustomPainter {
     );
   }
 
-  // ====================================================
-  // DRAW ROTATED NUMBERS AROUND THE CIRCLE
-  // ====================================================
+  
+  
+  
 
   void _drawRingNumbers({
     required Canvas canvas,
@@ -361,8 +361,8 @@ class CircularWheelPainter extends CustomPainter {
     required Color selectedColor,
     required List<String> selectedNumbers,
   }) {
-    // Numbers are distributed around the upper-left arc
-    // of the circular wheel.
+    
+    
 
     final startAngle = -170 * math.pi / 180;
     final endAngle = -90 * math.pi / 180;
@@ -375,7 +375,7 @@ class CircularWheelPainter extends CustomPainter {
       final angle =
           startAngle + (endAngle - startAngle) * progress;
 
-      // Position on circle
+      
       final position = Offset(
         center.dx + ringRadius * math.cos(angle),
         center.dy + ringRadius * math.sin(angle),
@@ -404,7 +404,7 @@ class CircularWheelPainter extends CustomPainter {
 
       textPainter.layout();
 
-      // Rotate numbers along the circular direction
+      
       canvas.save();
 
       canvas.translate(

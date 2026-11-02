@@ -77,7 +77,7 @@ class AppColors {
   static const Color darkGray = Color(0xFF1E1E1E);
   static const Color mediumGray = Color(0xFF4A4A4A);
 
-  // Concentric ring layers.
+
   static const Color ringYrs = textWhite;
   static const Color ringMmDays = Color(0xFFFFF2AF);
   static const Color ringHrsMins = Color(0xFF2E7E91);

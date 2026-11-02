@@ -1,7 +1,7 @@
 import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:astrologer_app/presentation/insights_cubit/insights_cubit.dart';
 import 'package:astrologer_app/presentation/insights_cubit/insights_state.dart';
-import 'package:astrologer_app/presentation/screen/widgets/resusable_widget.dart';
+import 'package:astrologer_app/presentation/widgets/luck_number_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,20 +28,19 @@ class InsightsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // 2. Cosmic Wheel Natal Matrix Placement Background
+                  
                   _buildNatalChartSection(state, context),
-                  SizedBox(height: 10,) ,
+                  SizedBox(height: 10),
                   Center(
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                    
-                   
+
                       children: [
-                        LuckNumberCard.dot(3, AppColors.tealBlue),
+                        CustomWidgets.dot(3, AppColors.tealBlue),
                         SizedBox(width: 4),
-                        LuckNumberCard.dot(5, AppColors.tealBlue),
+                        CustomWidgets.dot(5, AppColors.tealBlue),
                         SizedBox(width: 4),
-                    
+
                         const Center(
                           child: Text(
                             '✦',
@@ -51,30 +50,28 @@ class InsightsScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                 
+
                         SizedBox(width: 4),
-                    
-                        LuckNumberCard.dot(5, AppColors.tealBlue),
+
+                        CustomWidgets.dot(5, AppColors.tealBlue),
                         SizedBox(width: 4),
-                    
-                        LuckNumberCard.dot(3, AppColors.tealBlue),
+
+                        CustomWidgets.dot(3, AppColors.tealBlue),
                       ],
                     ),
                   ),
 
-               
-
-                  // 3. Astrology Segment Briefings
+                  
                   _buildSectionHeader("ASTROLOGY"),
                   foucusCardBuildNew(state.focusOfTheDay),
 
-                  // Focus Segment Card
-                  // _buildFocusCard(state.focusOfTheDay),
+                  
+                  
 
-                  // Main Narrative Reading Block
+                  
                   _buildHoroscopeNarrativeCard(),
 
-                  // Metrics Split Grid
+                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: Row(
@@ -84,7 +81,7 @@ class InsightsScreen extends StatelessWidget {
                             "Favorable Direction",
                             "assets/png/direction.png",
 
-                            // "assets/svg/favorable_direction.svg",
+                            
                             AppColors.deepBlueTeal,
                             "North",
                           ),
@@ -103,18 +100,18 @@ class InsightsScreen extends StatelessWidget {
                     ),
                   ),
 
-                  // Fun Facts Horizontal Banner
+                  
                   _buildFunFactsBanner(),
 
-                  // 4. Numerology Visualizer Segment Maps
+                  
                   _buildSectionHeader("NUMEROLOGY"),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    child: LuckNumberCard.buildNumerologyCard(
+                    child: CustomWidgets.numerologyCard(
                       "Stay open to unexpected opportunities. Trust your instincts, explore something new, and avoid overthinking your next move.",
                     ),
                   ),
-                  // _buildNumerologyCard("${state.luckyNumber}"),
+                  
                   _buildDestinyPathwayCardNew(state.destinyNumber),
 
                   const SizedBox(height: 60),
@@ -132,13 +129,13 @@ class InsightsScreen extends StatelessWidget {
 
     return SizedBox(
       height:
-          52, // Increased height to cleanly distribute the labels and bottom anchor elements
+          52, 
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         itemCount: tabs.length,
 
-        // ── 1. Text Items and Underline Selection Indicators ───────────────────
+        
         itemBuilder: (context, index) {
           final currentTab = tabs[index];
           final isSelected = currentTab == selectedTab;
@@ -154,7 +151,7 @@ class InsightsScreen extends StatelessWidget {
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 0.3,
-                  // Selected item gets high contrast teal; unselected gets a soft slate-grey
+                  
                   color: isSelected
                       ? AppColors.deepTeal
                       : AppColors.mutedBlueGray,
@@ -162,11 +159,11 @@ class InsightsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 6),
 
-              // Underline line + center dot indicator (drawn exclusively below the selected option)
+              
               Opacity(
                 opacity: isSelected
                     ? 1.0
-                    : 0.0, // Retains layout spacing when hidden to stop layout shifts
+                    : 0.0, 
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -176,7 +173,7 @@ class InsightsScreen extends StatelessWidget {
                       color: AppColors.deepTeal,
                     ),
                     const SizedBox(width: 4),
-                    LuckNumberCard.dot(4, AppColors.deepTeal),
+                    CustomWidgets.dot(4, AppColors.deepTeal),
                     const SizedBox(width: 4),
                     Container(
                       width: 14,
@@ -190,7 +187,7 @@ class InsightsScreen extends StatelessWidget {
           );
         },
 
-        // ── 2. Middle Inter-Element Separators (Triple Dots) ───────────────────
+        
         separatorBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -199,20 +196,20 @@ class InsightsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                LuckNumberCard.dot(
+                CustomWidgets.dot(
                   1.5,
                   AppColors.paleBlueGray,
-                ), // Tiny outer dot
+                ), 
                 const SizedBox(width: 3),
-                LuckNumberCard.dot(
+                CustomWidgets.dot(
                   3.5,
                   AppColors.mutedBlueGray,
-                ), // Bigger core dot
+                ), 
                 const SizedBox(width: 3),
-                LuckNumberCard.dot(
+                CustomWidgets.dot(
                   1.5,
                   AppColors.paleBlueGray,
-                ), // Tiny outer dot
+                ), 
               ],
             ),
           );
@@ -503,6 +500,8 @@ class InsightsScreen extends StatelessWidget {
         style: const TextStyle(
           color: AppColors.black38,
           fontSize: 12,
+          fontFamily: "Geist",
+
           fontWeight: FontWeight.w700,
           letterSpacing: 1.5,
         ),
@@ -513,9 +512,9 @@ class InsightsScreen extends StatelessWidget {
   Widget foucusCardBuildNew(String target) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      height: 60, // Fixed height to match the compact banner design
+      height: 60, 
       decoration: BoxDecoration(
-        color: AppColors.paleBlue, // Light blue-grey background
+        color: AppColors.paleBlue, 
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: AppColors.paleBlueBorder, width: 1),
       ),
@@ -523,31 +522,35 @@ class InsightsScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         child: Stack(
           children: [
-            // ── 1. Background Waves ──────────────────────────────────────────
+            
             Positioned.fill(child: CustomPaint(painter: WavePainter())),
 
-            // ── 2. Content Layout (Text & Graphic Side-by-Side) ──────────────
+            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Left Text Component
+                  
                   RichText(
                     text: TextSpan(
                       text: 'Focus of the day: ',
                       style: const TextStyle(
-                        color: AppColors.grayBlue, // Soft muted grey-blue text
+                        color: AppColors.grayBlue, 
                         fontSize: 15,
+                        fontFamily: "Geist",
+
                         fontWeight: FontWeight.w400,
                       ),
                       children: [
                         TextSpan(
                           text: target,
                           style: const TextStyle(
+                            fontFamily: "Geist",
+
                             color: Color(
                               0xFF0F4D5C,
-                            ), // Deep teal emphasis color
+                            ), 
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -555,7 +558,7 @@ class InsightsScreen extends StatelessWidget {
                     ),
                   ),
 
-                  // Right Graphic Component (Stacked Zen Stones)
+                  
                   Padding(
                     padding: const EdgeInsets.only(right: 8, bottom: 4),
                     child: SizedBox(
@@ -564,7 +567,7 @@ class InsightsScreen extends StatelessWidget {
                       child: Stack(
                         alignment: Alignment.bottomCenter,
                         children: [
-                          // Bottom Stone (Solid Deep Teal)
+                          
                           Positioned(
                             bottom: 0,
                             child: Container(
@@ -578,7 +581,7 @@ class InsightsScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // Middle Stone (White with Teal Outline)
+                          
                           Positioned(
                             bottom: 12,
                             child: Container(
@@ -596,7 +599,7 @@ class InsightsScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // Top Stone (Semi-transparent Glossy Light Blue)
+                          
                           Positioned(
                             bottom: 24,
                             child: Container(
@@ -627,7 +630,7 @@ class InsightsScreen extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
       width: double.infinity,
-      // 1. Clip.antiAlias ensures the large background SVG doesn't bleed outside the rounded corners
+      
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: AppColors.cream,
@@ -636,42 +639,41 @@ class InsightsScreen extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // ── 1. Background SVG (Bottom Right) ─────────────────────────
+          
           Positioned(
-            bottom: -30, // Pushes it slightly off the bottom edge
-            right: -20, // Pushes it slightly off the right edge
-            child: SvgPicture.asset(
-              "assets/svg/horoscope.svg",
-              height: 170,
-              // Made much larger to match the reference image
-              // Optional: Add color/opacity here if your SVG doesn't have it built-in
-              // color: AppColors.black.withOpacity(0.1),
-            ),
+            bottom: -30, 
+            right: -20, 
+            child: SvgPicture.asset("assets/svg/horoscope.svg", height: 170),
           ),
 
-          // ── 2. Foreground Text Content ───────────────────────────────
+          
           Padding(
-            padding: const EdgeInsets.all(24), // Padding goes here now
+            padding: const EdgeInsets.all(24), 
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min, // Wraps content tightly
+              mainAxisSize: MainAxisSize.min, 
               children: const [
                 Text(
                   'Your today\'s horoscope',
                   style: TextStyle(
-                    fontSize: 16, // Increased from 16 to match image
+                    fontSize: 16,
+                    fontFamily: "Satoshi",
+
                     fontWeight: FontWeight.w700,
                     color: AppColors.nearBlack,
                   ),
                 ),
-                SizedBox(height: 16), // Increased spacing
+                SizedBox(height: 16), 
                 Text(
                   'Give yourself time to heal and focus on your well-being today. Adopt healthy habits and choose nourishing foods. Stay patient—positive career opportunities are on the way, while love brings warmth and connection.',
                   style: TextStyle(
+                    fontFamily: "Satoshi",
+                    fontWeight: FontWeight.w500,
+
                     color: Color(
                       0xFF4C4C4C,
-                    ), // Slightly darker grey for readability
-                    fontSize: 12, // Increased from 13 to match image
+                    ), 
+                    fontSize: 12, 
                   ),
                 ),
               ],
@@ -696,6 +698,7 @@ class InsightsScreen extends StatelessWidget {
       ),
       child: Column(
         children: [
+          SizedBox(height: 8),
           Text(
             title,
             style: const TextStyle(
@@ -712,9 +715,9 @@ class InsightsScreen extends StatelessWidget {
           ),
           Row(
             children: [
-              Expanded(child: leftLineWidget(themeColor)),
+              Expanded(child: CustomWidgets.leftLine(themeColor)),
               const SizedBox(width: 4),
-              buildDots(themeColor),
+              CustomWidgets.dotGroup(themeColor),
               const SizedBox(width: 6),
               Flexible(
                 child: Text(
@@ -729,9 +732,9 @@ class InsightsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 6),
-              buildDots(themeColor),
+              CustomWidgets.dotGroup(themeColor),
               const SizedBox(width: 4),
-              Expanded(child: RightLineWidget(themeColor)),
+              Expanded(child: CustomWidgets.rightLine(themeColor)),
             ],
           ),
         ],
@@ -744,7 +747,7 @@ class InsightsScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
       child: Stack(
         children: [
-          // ── 1. Background Art ────────────────────────────────────────
+          
           Positioned.fill(
             child: SvgPicture.asset(
               "assets/svg/fun_facts.svg",
@@ -752,8 +755,8 @@ class InsightsScreen extends StatelessWidget {
             ),
           ),
 
-          // ── 2. Other Background Clouds & Sparkles ─────────────────────
-          // Bottom Right Cloud
+          
+          
           Positioned(
             bottom: 5,
             right: 20,
@@ -764,7 +767,7 @@ class InsightsScreen extends StatelessWidget {
             ),
           ),
 
-          // Top Right Cloud (Large)
+          
           Positioned(
             top: 5,
             right: 100,
@@ -775,7 +778,7 @@ class InsightsScreen extends StatelessWidget {
             ),
           ),
 
-          // Bottom Left Cloud
+          
           Positioned(
             bottom: 20,
             left: 80,
@@ -786,7 +789,7 @@ class InsightsScreen extends StatelessWidget {
             ),
           ),
 
-          // ── 3. Foreground Text Content ───────────────────────────────
+          
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
             child: Column(
@@ -798,6 +801,8 @@ class InsightsScreen extends StatelessWidget {
                   style: TextStyle(
                     color: AppColors.textWhite,
                     fontSize: 18,
+                    fontFamily: "Satoshi",
+
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -808,6 +813,9 @@ class InsightsScreen extends StatelessWidget {
                   'desire to shine.',
                   style: TextStyle(
                     color: AppColors.white70,
+                    fontFamily: "Satoshi",
+                    fontWeight: FontWeight.w500,
+
                     fontSize: 13,
                     height: 1.45,
                   ),
@@ -824,7 +832,7 @@ class InsightsScreen extends StatelessWidget {
     return Center(
       child: AspectRatio(
         aspectRatio:
-            3 / 3, // You can tweak this to 5/4 if it looks closer to your image
+            3 / 3, 
         child: Container(
           decoration: BoxDecoration(
             color: AppColors.iceWhite,
@@ -842,19 +850,19 @@ class InsightsScreen extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                // 1. BACKGROUND GLOW CIRCLE & NUMBER
+                
                 Align(
-                  alignment: const Alignment(0, -0.4), // Pushes it up slightly
+                  alignment: const Alignment(0, -0.4), 
                   child: Container(
                     width: 80,
                     height: 100,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppColors.paleYellow, // Edge blending into white
+                      color: AppColors.paleYellow, 
 
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.paleYellow, // Pale yellow glow
+                          color: AppColors.paleYellow, 
                           blurRadius: 40,
                           spreadRadius: 10,
                         ),
@@ -867,20 +875,20 @@ class InsightsScreen extends StatelessWidget {
                           fontSize: 35,
 
                           fontWeight: FontWeight.w500,
-                          color: AppColors.neutralGray, // Greyish brown
+                          color: AppColors.neutralGray, 
                         ),
                       ),
                     ),
                   ),
                 ),
 
-                // 2. TREES (Left and Right)
+                
                 Positioned(
                   top: 40,
                   left: -10,
                   child: SvgPicture.asset(
                     'assets/svg/left_tree.svg',
-                    width: 140, // Increased size
+                    width: 140, 
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -889,27 +897,27 @@ class InsightsScreen extends StatelessWidget {
                   right: -10,
                   child: SvgPicture.asset(
                     'assets/svg/right_tree.svg',
-                    width: 140, // Increased size
+                    width: 140, 
                     fit: BoxFit.contain,
                   ),
                 ),
 
-                // 3. WINDING PATH (Bottom)
+                
                 Positioned(
                   bottom: 0,
                   left: 0,
                   right: 0,
                   height: 250,
-                  // height: 250, // Taller path to match the image
+                  
                   child: SvgPicture.asset(
                     'assets/svg/direction_path.svg',
                     fit: BoxFit.fitWidth,
                   ),
                 ),
 
-                // 4. PERSON SILHOUETTE (Center)
+                
                 Positioned(
-                  bottom: 100, // Anchored from the bottom
+                  bottom: 100, 
                   child: SvgPicture.asset(
                     'assets/svg/direction_person_standing.svg',
                     height: 135,
@@ -917,7 +925,7 @@ class InsightsScreen extends StatelessWidget {
                   ),
                 ),
 
-                // 5. TEXT SECTION (Bottom)
+                
                 Positioned(
                   bottom: 10,
                   left: 0,
@@ -926,9 +934,11 @@ class InsightsScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'Destiny Number $destinyNumber', // Removed the colon
+                        'Destiny Number $destinyNumber', 
                         style: const TextStyle(
-                          fontSize: 18, // Slightly larger
+                          fontFamily: "Satoshi",
+
+                          fontSize: 18, 
                           fontWeight: FontWeight.bold,
                           color: AppColors.black,
                           letterSpacing: -0.5,
@@ -937,9 +947,11 @@ class InsightsScreen extends StatelessWidget {
                       const Text(
                         'The Seeker',
                         style: TextStyle(
-                          fontSize: 12, // Slightly larger
+                          fontFamily: "Satoshi",
+
+                          fontSize: 12, 
                           fontWeight: FontWeight.w600,
-                          color: AppColors.luckyTeal, // Teal color
+                          color: AppColors.luckyTeal, 
                         ),
                       ),
                       const SizedBox(height: 25),
@@ -954,55 +966,15 @@ class InsightsScreen extends StatelessWidget {
     );
   }
 
-  Widget RightLineWidget([Color? color]) {
-    final c = color ?? AppColors.luckyTeal;
-    return Container(
-      height: 2,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [c, c.withOpacity(0)],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-      ),
-    );
-  }
-
-  Widget leftLineWidget([Color? color]) {
-    final c = color ?? AppColors.luckyTeal;
-    return Container(
-      height: 2,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [c.withOpacity(0), c],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-      ),
-    );
-  }
-
-  Widget buildDots(Color color) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        LuckNumberCard.dot(2.5, color),
-        const SizedBox(width: 3),
-        LuckNumberCard.dot(5, color),
-        const SizedBox(width: 3),
-        LuckNumberCard.dot(2.5, color),
-      ],
-    );
-  }
 }
 
-// Custom Painter to draw the smooth ambient hills/waves on the right edge
+
 class WavePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()..style = PaintingStyle.fill;
 
-    // Draw the lighter, back wave
+    
     paint.color = AppColors.lightBlue;
     final backPath = Path()
       ..moveTo(size.width * 0.6, size.height)
@@ -1016,7 +988,7 @@ class WavePainter extends CustomPainter {
       ..close();
     canvas.drawPath(backPath, paint);
 
-    // Draw the darker, front wave
+    
     paint.color = AppColors.softBlue;
     final frontPath = Path()
       ..moveTo(size.width * 0.7, size.height)
