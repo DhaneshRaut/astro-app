@@ -550,10 +550,10 @@ static  Widget buildMetricCard(
   ) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
-      decoration: BoxDecoration(
-        color: AppColors.textWhite,
-        borderRadius: BorderRadius.circular(20),
-      ),
+      // decoration: BoxDecoration(
+      //   color: AppColors.textWhite,
+      //   borderRadius: BorderRadius.circular(20),
+      // ),
       child: Column(
         children: [
           SizedBox(height: 8),
@@ -752,7 +752,7 @@ static  Widget buildMetricCard(
                 ),
 
                 Positioned(
-                  bottom: 0,
+                  bottom: -50,
                   left: 0,
                   right: 0,
                   height: 250,
@@ -764,16 +764,16 @@ static  Widget buildMetricCard(
                 ),
 
                 Positioned(
-                  bottom: 100,
+                  bottom: 50,
                   child: SvgPicture.asset(
                     'assets/svg/direction_person_standing.svg',
-                    height: 135,
+                    height: 130,
                     fit: BoxFit.contain,
                   ),
                 ),
 
                 Positioned(
-                  bottom: 10,
+                  bottom: -20,
                   left: 0,
                   right: 0,
                   child: Column(

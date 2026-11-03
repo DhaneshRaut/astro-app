@@ -49,7 +49,7 @@ class JournalScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Your Journals',
+                                'Your Journal',
                                 style: TextStyle(
                                   color: AppColors.ink,
                                   fontSize: 26,
