@@ -49,7 +49,7 @@ class JournalScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Your Journal',
+                                'Your Journals',
                                 style: TextStyle(
                                   color: AppColors.ink,
                                   fontSize: 26,
@@ -73,18 +73,20 @@ class JournalScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 24),
+                        SizedBox(height: 20),
+
                         Center(
                           child: SizedBox(
-                            width: 120,
-                            height: 120,
-                            child: SvgPicture.asset(
-                              'assets/svg/book.svg',
+                            width: MediaQuery.sizeOf(context).width ,
+                            height:  MediaQuery.sizeOf(context).width * 1,
+                            child: Image.asset(
+                              'assets/png/journal.png',
                               fit: BoxFit.contain,
                               alignment: Alignment.center,
                             ),
                           ),
                         ),
+             
                       ],
                     ),
                   ),
