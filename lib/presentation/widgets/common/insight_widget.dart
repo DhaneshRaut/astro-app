@@ -1,7 +1,6 @@
 import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:astrologer_app/presentation/insights_cubit/insights_state.dart';
 import 'package:astrologer_app/presentation/widgets/common/luck_number_widgets.dart';
-import 'package:astrologer_app/presentation/widgets/wave_painter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
