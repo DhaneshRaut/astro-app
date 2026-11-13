@@ -330,19 +330,19 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(24),
-                                child: SvgPicture.asset(
-                                  'assets/svg/rectangle_gradient_layout.svg',
+                                child: Image.asset(
+                                  'assets/png/horoscope_sparkle_star.png',
                                   width: double.infinity,
-                                  height: 220,
-                                  fit: BoxFit.cover,
+                                  height: 200,
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 20),
                                 child: Column(
+                                  mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const SizedBox(height: 10),
 
                                     Text(
                                       "Gemini",
@@ -354,7 +354,6 @@ class HomeScreen extends StatelessWidget {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    const SizedBox(height: 4),
                                     Text(
                                       state.dateStr,
                                       style: const TextStyle(
@@ -364,44 +363,29 @@ class HomeScreen extends StatelessWidget {
                                         fontSize: 12,
                                       ),
                                     ),
-                                    const SizedBox(height: 25),
+                                    const SizedBox(height: 15),
                                     const Text(
                                       'Your natural curiosity is your strength today. Stay open to new ideas, but give yourself time to focus before making decisions.',
                                       style: TextStyle(
                                         fontFamily: "Satoshi",
 
-                                        color: AppColors.textMuted,
+                                        color: AppColors.textWhite,
                                         fontSize: 14,
                                         height: 1.4,
                                       ),
                                     ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {},
-                                          child: const Text(
-                                            'Read more >',
-                                            style: TextStyle(
-                                              color: AppColors.accentTeal,
-                                              fontSize: 13,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                 
+
                                   ],
                                 ),
                               ),
                               Positioned(
-                                top: -30,
-                                right: 20,
+                                top: -20,
+                                right: 10,
                                 child: SvgPicture.asset(
                                   'assets/svg/sign.svg',
                                   width: 60,
-                                  height: 60,
+                                  height: 70,
                                 ),
                               ),
                             ],
