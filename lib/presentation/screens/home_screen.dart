@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 const Positioned(
-                  left: 20,
+                  left: 10,
                   top: 60,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,14 +84,18 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         "Saniya",
                         style: TextStyle(
+                          fontFamily: "Geist",
+                          letterSpacing: -0.5,
                           color: AppColors.textWhite,
                           fontSize: 26,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
                         "Air • Mutable • Mercury",
                         style: TextStyle(
-                          color: AppColors.textWhite,
+                          fontFamily: "Geist",
+                          color: AppColors.fadedBlue,
                           fontSize: 10,
                         ),
                       ),
@@ -343,7 +347,6 @@ class HomeScreen extends StatelessWidget {
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-
                                     Text(
                                       "Gemini",
                                       style: const TextStyle(
@@ -374,8 +377,6 @@ class HomeScreen extends StatelessWidget {
                                         height: 1.4,
                                       ),
                                     ),
-                                 
-
                                   ],
                                 ),
                               ),

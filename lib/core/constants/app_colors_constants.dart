@@ -9,6 +9,8 @@ class AppColors {
   static const Color textWhite = Colors.white;
   static const Color textMuted = Color(0xFF8FA1A6);
   static const Color accentTeal = Color(0xFF4FA0B5);
+    static const Color fadedBlue = Color(0xFFAEF2FF);
+
 
   static const Color black = Color(0xFF000000);
   static const Color transparent = Color(0x00000000);
