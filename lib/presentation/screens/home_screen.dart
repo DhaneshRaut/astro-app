@@ -34,15 +34,40 @@ class HomeScreen extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                
                 Positioned.fill(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 100),
                     child: CustomPaint(painter: const CircularWheelPainter()),
                   ),
                 ),
+                Positioned(
+                  left: 100,
+                  bottom: 300,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: ["Yrs", "Mm", "Days", "Hrs", "Mins", "Sec"]
+                        .map(
+                          (unit) => Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 5.0,
+                            ),
+                            child: Text(
+                              unit,
+                              style: TextStyle(
+                                color: unit == "yrs"
+                                    ? AppColors.black
+                                    : AppColors.black,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "Satoshi",
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
 
-                
                 const Positioned(
                   left: 20,
                   top: 60,
@@ -74,12 +99,11 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                
                 Positioned(
                   right: 240,
                   top: 170,
                   child: SvgPicture.asset(
-                    "assets/svg/symbol_two.svg", 
+                    "assets/svg/symbol_two.svg",
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
@@ -92,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                   left: 45,
                   top: 250,
                   child: SvgPicture.asset(
-                    "assets/svg/symbol_three.svg", 
+                    "assets/svg/symbol_three.svg",
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
@@ -109,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                     height: 20,
                     width: 20,
                     colorFilter: ColorFilter.mode(
-                      AppColors.textWhite.withOpacity(0.15), 
+                      AppColors.textWhite.withOpacity(0.15),
                       BlendMode.srcIn,
                     ),
                   ),
@@ -141,9 +165,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                
 
-                
                 Positioned(
                   right: 70,
                   top: 60,
@@ -152,7 +174,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0XFF20707E)),
                       color: AppColors.textWhite,
-                      shape: BoxShape.circle, 
+                      shape: BoxShape.circle,
                     ),
                     child: Center(
                       child: SvgPicture.asset(
@@ -162,8 +184,6 @@ class HomeScreen extends StatelessWidget {
                         fit: BoxFit.cover,
                         color: AppColors.deepTeal,
                       ),
-
-                
                     ),
                   ),
                 ),
@@ -175,7 +195,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0XFF20707E)),
                       color: AppColors.textWhite,
-                      shape: BoxShape.circle, 
+                      shape: BoxShape.circle,
                     ),
                     child: Center(
                       child: SvgPicture.asset(
@@ -189,7 +209,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                
                 DraggableScrollableSheet(
                   initialChildSize: 0.5,
                   minChildSize: 0.5,
@@ -213,7 +232,6 @@ class HomeScreen extends StatelessWidget {
                           vertical: 12,
                         ),
                         children: [
-                          
                           _buildSectionHeader("GOAL'S"),
                           SizedBox(height: 10),
                           ClipRRect(
@@ -224,7 +242,6 @@ class HomeScreen extends StatelessWidget {
                                   colors: [
                                     AppColors.paleBlue,
                                     AppColors.lemonYellow,
-                                    
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -237,7 +254,7 @@ class HomeScreen extends StatelessWidget {
                                 fit: StackFit.expand,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(top:8.0),
+                                    padding: const EdgeInsets.only(top: 8.0),
                                     child: SvgPicture.asset(
                                       'assets/svg/goals.svg',
                                       fit: BoxFit.cover,
@@ -283,7 +300,6 @@ class HomeScreen extends StatelessWidget {
                                                 borderRadius:
                                                     BorderRadius.circular(25),
                                               ),
-                                              
                                             ),
                                             child: const Text(
                                               '+ Create Your Goal',
@@ -333,7 +349,7 @@ class HomeScreen extends StatelessWidget {
                                       style: const TextStyle(
                                         color: AppColors.textWhite,
                                         fontSize: 22,
-                                              fontFamily: "Satoshi",
+                                        fontFamily: "Satoshi",
 
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -342,7 +358,7 @@ class HomeScreen extends StatelessWidget {
                                     Text(
                                       state.dateStr,
                                       style: const TextStyle(
-                                      fontFamily: "Satoshi",
+                                        fontFamily: "Satoshi",
 
                                         color: AppColors.textMuted,
                                         fontSize: 12,
@@ -352,7 +368,7 @@ class HomeScreen extends StatelessWidget {
                                     const Text(
                                       'Your natural curiosity is your strength today. Stay open to new ideas, but give yourself time to focus before making decisions.',
                                       style: TextStyle(
-                                       fontFamily: "Satoshi",
+                                        fontFamily: "Satoshi",
 
                                         color: AppColors.textMuted,
                                         fontSize: 14,
@@ -403,17 +419,17 @@ class HomeScreen extends StatelessWidget {
                           ),
 
                           SizedBox(height: 10),
-                           Center(
-                          child: SizedBox(
-                            width: MediaQuery.sizeOf(context).width ,
-                            height:  MediaQuery.sizeOf(context).width * 1,
-                            child: Image.asset(
-                              'assets/png/journal.png',
-                              fit: BoxFit.contain,
-                              alignment: Alignment.center,
+                          Center(
+                            child: SizedBox(
+                              width: MediaQuery.sizeOf(context).width,
+                              height: MediaQuery.sizeOf(context).width * 1,
+                              child: Image.asset(
+                                'assets/png/journal.png',
+                                fit: BoxFit.contain,
+                                alignment: Alignment.center,
+                              ),
                             ),
                           ),
-                        ),
 
                           const SizedBox(height: 20),
                         ],
@@ -429,7 +445,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  
   Widget _buildSectionHeader(String title) {
     return Padding(
       padding: const EdgeInsets.only(left: 10, top: 10, bottom: 0.0),
@@ -447,7 +462,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
 
 class AstrologicalWheelPainter extends CustomPainter {
   @override

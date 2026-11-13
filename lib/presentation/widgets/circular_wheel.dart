@@ -14,7 +14,7 @@ class CircularWheelPainter extends CustomPainter {
     
     final center = Offset(
       size.width * 0.93,
-      size.height * 0.495,
+      size.height * 0.465,
     );
 
     
@@ -26,11 +26,11 @@ class CircularWheelPainter extends CustomPainter {
     
     final radii = [
       radius,
-      radius * 0.77,
-      radius * 0.62,
+      radius * 0.81,
+      radius * 0.65,
       radius * 0.48,
-      radius * 0.34,
-      radius * 0.19,
+      radius * 0.35,
+      radius * 0.18,
     ];
 
     
