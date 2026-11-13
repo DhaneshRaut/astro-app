@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class InsightWidget {
-  static Widget buildNatalChartSection(InsightsLoaded state, BuildContext context) {
+  static Widget buildNatalChartSection(
+    InsightsLoaded state,
+    BuildContext context,
+  ) {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.lemonYellow.withOpacity(0.1),
@@ -280,8 +283,7 @@ class InsightWidget {
     );
   }
 
-
-static   Widget buildTimelineTabs({String selectedTab = 'TODAY'}) {
+  static Widget buildTimelineTabs({String selectedTab = 'TODAY'}) {
     final tabs = ['YESTERDAY', 'TODAY', 'TOMORROW', 'WEEK', 'MONTH'];
 
     return SizedBox(
@@ -360,8 +362,7 @@ static   Widget buildTimelineTabs({String selectedTab = 'TODAY'}) {
     );
   }
 
-
- static Widget buildSectionHeader(String title) {
+  static Widget buildSectionHeader(String title) {
     return Padding(
       padding: const EdgeInsets.only(left: 24.0, top: 32.0, bottom: 12.0),
       child: Text(
@@ -378,34 +379,116 @@ static   Widget buildTimelineTabs({String selectedTab = 'TODAY'}) {
     );
   }
 
- static Widget buildFocusCardNew(String target) {
+  static Widget buildFocusCardNew(String target, BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      height: 60,
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+      height: 55, // Height matches the UI screenshot
       decoration: BoxDecoration(
-        color: AppColors.paleBlue,
-        borderRadius: BorderRadius.circular(10),
+        // Soft gradient from left (white) to right (pale blue) as seen in the image
+        gradient: const LinearGradient(
+          colors: [Color(0xFFF4FBFD), Color(0xFFE2F3F7)],
+          begin: Alignment.topRight,
+          end: Alignment.centerRight,
+        ),
+        borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.paleBlueBorder, width: 1),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(
+          11,
+        ), // Fits inside the 12px outer border
         child: Stack(
           children: [
-            Positioned.fill(child: CustomPaint(painter: WavePainter())),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+            // 1. Background SVG (Waves / Layout extending from the left)
+            Positioned(
+              bottom: 0,
+              right: 0,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  RichText(
+                  Stack(
+                    children: [
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: SvgPicture.asset(
+                          "assets/svg/astrology_below_layout.svg",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Expanded(
+                        child: SvgPicture.asset(
+                          "assets/svg/astrology_above_layout.svg",
+                          height: 25,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 0, // Positioned lower
+              right: 45,
+              child: Container(
+                width: 44,
+                height: 20,
+                decoration: BoxDecoration(
+                  color: AppColors.mediumTeal,
+                  border: Border.all(color: Color(0xff1B6D7B), width: 1.5),
+
+                  borderRadius: BorderRadius.all(Radius.elliptical(22, 10)),
+                ),
+              ),
+            ),
+
+            Positioned(
+              bottom: 15,
+              right: 50,
+              child: Container(
+                width: 32,
+                height: 16,
+                decoration: BoxDecoration(
+                  color: AppColors.textWhite,
+                  border: Border.all(color: AppColors.mediumTeal, width: 1.5),
+                  borderRadius: BorderRadius.all(Radius.elliptical(16, 8)),
+                ),
+              ),
+            ),
+
+            // 4. Second Overlapping Ring (Lower)
+            Positioned(
+              bottom: 30, // Positioned lower
+              right: 55, // Slightly adjusted for the smaller size
+              child: Container(
+                width: 20,
+                height: 12,
+                decoration: BoxDecoration(
+                  color: AppColors.lightTeal.withOpacity(0.8),
+                  border: Border.all(color: Color(0xff8AC9D3), width: 1.5),
+
+                  borderRadius: BorderRadius.all(Radius.elliptical(10, 6)),
+                ),
+              ),
+            ),
+
+            Positioned.fill(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16, right: 50),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: RichText(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     text: TextSpan(
                       text: 'Focus of the day: ',
                       style: const TextStyle(
-                        color: AppColors.grayBlue,
-                        fontSize: 15,
+                        color: AppColors.grayBlue, // e.g. Color(0xFF7A8B93)
+                        fontSize: 12,
                         fontFamily: "Geist",
-
                         fontWeight: FontWeight.w400,
                       ),
                       children: [
@@ -413,73 +496,16 @@ static   Widget buildTimelineTabs({String selectedTab = 'TODAY'}) {
                           text: target,
                           style: const TextStyle(
                             fontFamily: "Geist",
+                            fontSize: 12,
 
-                            color: Color(0xFF0F4D5C),
+                            color: Color(0xFF0F4D5C), // Dark teal
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
                     ),
                   ),
-
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8, bottom: 4),
-                    child: SizedBox(
-                      width: 45,
-                      height: 55,
-                      child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          Positioned(
-                            bottom: 0,
-                            child: Container(
-                              width: 44,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                color: AppColors.mediumTeal,
-                                borderRadius: BorderRadius.all(
-                                  Radius.elliptical(22, 10),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          Positioned(
-                            bottom: 12,
-                            child: Container(
-                              width: 32,
-                              height: 16,
-                              decoration: BoxDecoration(
-                                color: AppColors.textWhite,
-                                border: Border.all(
-                                  color: AppColors.mediumTeal,
-                                  width: 1.5,
-                                ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.elliptical(16, 8),
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          Positioned(
-                            bottom: 24,
-                            child: Container(
-                              width: 20,
-                              height: 12,
-                              decoration: BoxDecoration(
-                                color: AppColors.paleAqua.withOpacity(0.8),
-                                borderRadius: BorderRadius.all(
-                                  Radius.elliptical(10, 6),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ],
@@ -488,9 +514,9 @@ static   Widget buildTimelineTabs({String selectedTab = 'TODAY'}) {
     );
   }
 
- static Widget buildHoroscopeNarrativeCard() {
+  static Widget buildHoroscopeNarrativeCard() {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24),
+      margin: const EdgeInsets.symmetric(horizontal: 15),
       width: double.infinity,
 
       clipBehavior: Clip.antiAlias,
@@ -542,7 +568,7 @@ static   Widget buildTimelineTabs({String selectedTab = 'TODAY'}) {
     );
   }
 
-static  Widget buildMetricCard(
+  static Widget buildMetricCard(
     String title,
     String value,
     Color themeColor,
@@ -550,10 +576,7 @@ static  Widget buildMetricCard(
   ) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
-      // decoration: BoxDecoration(
-      //   color: AppColors.textWhite,
-      //   borderRadius: BorderRadius.circular(20),
-      // ),
+
       child: Column(
         children: [
           SizedBox(height: 8),
@@ -600,7 +623,7 @@ static  Widget buildMetricCard(
     );
   }
 
- static Widget buildFunFactsBanner() {
+  static Widget buildFunFactsBanner() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
       child: Stack(
@@ -641,7 +664,101 @@ static  Widget buildMetricCard(
               color: AppColors.textWhite.withOpacity(0.12),
             ),
           ),
+//top cloud right 
+          Positioned(
+            right: -15,
+            top: -30,
+            child: Container(
+              decoration: BoxDecoration(
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: AppColors.textWhite.withOpacity(0.05), // Replace with AppColors.textWhite
+                //     blurRadius: 0.5,
+                //     spreadRadius: 1,
+                //   ),  
+                // ],
+              ),
+              width: 80,
+              height: 80,
+              child: ShaderMask(
+                shaderCallback: (Rect bounds) {
+                  return  RadialGradient(
+                    center: Alignment.center,
+                    radius:
+                        0.5, // Adjust between 0.4 and 0.5 to control fade width
+                    colors: [
+                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                      Colors.transparent, // Fades outer border out
+                    ],
+                    stops: [
+                      0.0,
+                      0.65,
+                      1.0,
+                    ], // Increase 0.65 for a thinner edge blur
+                  ).createShader(bounds);
+                },
+                blendMode: BlendMode.dstIn,
+                child: SvgPicture.asset(
+                  "assets/svg/faded_cloud.svg",
+                  height: 80,
+                  colorFilter:  ColorFilter.mode(
+                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            ),
+          ),
 
+            Positioned(
+            left: -10,
+            bottom: -5,
+            child: Container(
+              decoration: BoxDecoration(
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: AppColors.textWhite.withOpacity(0.05), // Replace with AppColors.textWhite
+                //     blurRadius: 0.5,
+                //     spreadRadius: 1,
+                //   ),  
+                // ],
+              ),
+              width: 80,
+              height: 80,
+              child: ShaderMask(
+                shaderCallback: (Rect bounds) {
+                  return  RadialGradient(
+                    center: Alignment.bottomLeft,
+                    radius:
+                        0.5, // Adjust between 0.4 and 0.5 to control fade width
+                    colors: [
+                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                      Colors.transparent, // Fades outer border out
+                    ],
+                    stops: [
+                      0.0,
+                      0.65,
+                      1.0,
+                    ], // Increase 0.65 for a thinner edge blur
+                  ).createShader(bounds);
+                },
+                blendMode: BlendMode.dstIn,
+                child: SvgPicture.asset(
+                  "assets/svg/faded_cloud.svg",
+                  height: 80,
+                  colorFilter:  ColorFilter.mode(
+                                        Colors.red
+,
+                  //  Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                    BlendMode.srcIn,
+                  ),
+                ),
+              ),
+            ),
+          ),
+    
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
             child: Column(
@@ -680,7 +797,7 @@ static  Widget buildMetricCard(
     );
   }
 
- static Widget buildDestinyPathwayCardNew(int destinyNumber) {
+  static Widget buildDestinyPathwayCardNew(int destinyNumber) {
     return Center(
       child: AspectRatio(
         aspectRatio: 3 / 3,
@@ -812,8 +929,7 @@ static  Widget buildMetricCard(
     );
   }
 
-
-  static  Widget buildCenterLayout() {
+  static Widget buildCenterLayout() {
     return Center(
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -841,15 +957,4 @@ static  Widget buildMetricCard(
       ),
     );
   }
-
-
-
-
-
-
-
-
-
-
-
 }

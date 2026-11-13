@@ -34,7 +34,8 @@ class InsightsScreen extends StatelessWidget {
                   InsightWidget.buildCenterLayout(),
 
                   InsightWidget.buildSectionHeader("ASTROLOGY"),
-                  InsightWidget.buildFocusCardNew(state.focusOfTheDay),
+                  InsightWidget.buildFocusCardNew(state.focusOfTheDay , context),
+                  SizedBox(height: 10),
 
                   InsightWidget.buildHoroscopeNarrativeCard(),
 

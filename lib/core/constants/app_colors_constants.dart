@@ -41,6 +41,7 @@ class AppColors {
   static const Color grayBlue = Color(0xFF7A8B90);
   static const Color mediumTeal = Color(0xFF268D9C);
   static const Color paleAqua = Color(0xFFBCE3EB);
+  static const Color lightTeal = Color(0xFFBEDDE2);
   static const Color cream = Color(0xFFFEFBEC);
   static const Color nearBlack = Color(0xFF040E10);
   static const Color iceWhite = Color(0xFFF3F8F9);
