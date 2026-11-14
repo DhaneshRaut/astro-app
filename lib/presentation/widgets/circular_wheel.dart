@@ -1,29 +1,16 @@
-
 import 'dart:math' as math;
 import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:flutter/material.dart';
-
-
-
 
 class CircularWheelPainter extends CustomPainter {
   const CircularWheelPainter();
 
   @override
   void paint(Canvas canvas, Size size) {
-    
-    final center = Offset(
-      size.width * 0.93,
-      size.height * 0.465,
-    );
+    final center = Offset(size.width * 0.93, size.height * 0.465);
 
-    
-    final radius = math.min(
-      size.height * 0.53,
-      size.width * 1.0,
-    );
+    final radius = math.min(size.height * 0.53, size.width * 0.9);
 
-    
     final radii = [
       radius,
       radius * 0.81,
@@ -33,7 +20,6 @@ class CircularWheelPainter extends CustomPainter {
       radius * 0.18,
     ];
 
-    
     final colors = [
       AppColors.cream,
       AppColors.lemonYellow,
@@ -43,23 +29,46 @@ class CircularWheelPainter extends CustomPainter {
       AppColors.paleCyan,
     ];
 
-    
     for (int i = 0; i < radii.length; i++) {
       final paint = Paint()
         ..color = colors[i]
         ..style = PaintingStyle.fill
         ..isAntiAlias = true;
 
-      canvas.drawCircle(
-        center,
-        radii[i],
-        paint,
+      canvas.drawCircle(center, radii[i], paint);
+    }
+
+    final unitLabels = ['Yrs', 'Mm', 'Days', 'Hrs', 'Mins', 'Sec'];
+    final labelFontSize = (math.min(size.width, size.height) * 0.035)
+        .clamp(9.0, 12.0)
+        .toDouble();
+
+    for (var i = 0; i < unitLabels.length; i++) {
+      final labelRadius = i == radii.length - 1
+          ? radii[i] * 0.72
+          : (radii[i] + radii[i + 1]) / 2;
+      final textPainter = TextPainter(
+        text: TextSpan(
+          text: unitLabels[i],
+          style: TextStyle(
+            color: AppColors.black,
+            fontSize: labelFontSize,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Satoshi',
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout();
+
+      textPainter.paint(
+        canvas,
+        Offset(
+          center.dx - labelRadius - textPainter.width / 2,
+          center.dy - textPainter.height / 2,
+        ),
       );
     }
 
-    
-
-    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -71,7 +80,6 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['22'],
     );
 
-    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -83,7 +91,6 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['9'],
     );
 
-    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -95,7 +102,6 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['20'],
     );
 
-    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -107,7 +113,6 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['14'],
     );
 
-    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -119,7 +124,6 @@ class CircularWheelPainter extends CustomPainter {
       selectedNumbers: ['8'],
     );
 
-    
     _drawRingNumbers(
       canvas: canvas,
       center: center,
@@ -132,10 +136,6 @@ class CircularWheelPainter extends CustomPainter {
     );
   }
 
-  
-  
-  
-
   void _drawRingNumbers({
     required Canvas canvas,
     required Offset center,
@@ -146,21 +146,14 @@ class CircularWheelPainter extends CustomPainter {
     required Color selectedColor,
     required List<String> selectedNumbers,
   }) {
-    
-    
-
     final startAngle = -170 * math.pi / 180;
     final endAngle = -90 * math.pi / 180;
 
     for (int i = 0; i < numbers.length; i++) {
-      final progress = numbers.length == 1
-          ? 0.5
-          : i / (numbers.length - 1);
+      final progress = numbers.length == 1 ? 0.5 : i / (numbers.length - 1);
 
-      final angle =
-          startAngle + (endAngle - startAngle) * progress;
+      final angle = startAngle + (endAngle - startAngle) * progress;
 
-      
       final position = Offset(
         center.dx + ringRadius * math.cos(angle),
         center.dy + ringRadius * math.sin(angle),
@@ -175,12 +168,8 @@ class CircularWheelPainter extends CustomPainter {
           text: number,
           style: TextStyle(
             fontSize: fontSize,
-            fontWeight: isSelected
-                ? FontWeight.w900
-                : FontWeight.w600,
-            color: isSelected
-                ? selectedColor
-                : normalColor,
+            fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
+            color: isSelected ? selectedColor : normalColor,
             height: 1,
           ),
         ),
@@ -189,22 +178,15 @@ class CircularWheelPainter extends CustomPainter {
 
       textPainter.layout();
 
-      
       canvas.save();
 
-      canvas.translate(
-        position.dx,
-        position.dy,
-      );
+      canvas.translate(position.dx, position.dy);
 
       canvas.rotate(angle + math.pi / 2);
 
       textPainter.paint(
         canvas,
-        Offset(
-          -textPainter.width / 2,
-          -textPainter.height / 2,
-        ),
+        Offset(-textPainter.width / 2, -textPainter.height / 2),
       );
 
       canvas.restore();
@@ -212,9 +194,7 @@ class CircularWheelPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(
-    covariant CircularWheelPainter oldDelegate,
-  ) {
+  bool shouldRepaint(covariant CircularWheelPainter oldDelegate) {
     return false;
   }
 }

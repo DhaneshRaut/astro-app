@@ -40,34 +40,6 @@ class HomeScreen extends StatelessWidget {
                     child: CustomPaint(painter: const CircularWheelPainter()),
                   ),
                 ),
-                Positioned(
-                  left: 100,
-                  bottom: 300,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: ["Yrs", "Mm", "Days", "Hrs", "Mins", "Sec"]
-                        .map(
-                          (unit) => Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 5.0,
-                            ),
-                            child: Text(
-                              unit,
-                              style: TextStyle(
-                                color: unit == "yrs"
-                                    ? AppColors.black
-                                    : AppColors.black,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "Satoshi",
-                              ),
-                            ),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ),
-
                 const Positioned(
                   left: 10,
                   top: 60,
