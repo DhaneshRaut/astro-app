@@ -142,25 +142,26 @@ class _MainLayoutState extends State<MainLayout> {
   }
 
   Widget _buildSelectedIcon(String assetPath) {
-    return Container(
-        width: 24,
-              height: 35 ,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [ 
-          SvgPicture.asset(
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SvgPicture.asset(assetPath, width: 24, height: 24, fit: BoxFit.cover),
+        ),
+
+        Positioned(
+          top: 0,
+          right: 0,
+          left: 0,
+
+          child: SvgPicture.asset(
             "assets/svg/selectedicon.svg",
-            width: 24,
-            height: 10 ,
+            // width: 24,
+            // height: 10,
             fit: BoxFit.fill,
           ),
-          SvgPicture.asset(assetPath, width: 24, height: 24 ,
-                      fit: BoxFit.cover,
-
-          
-          )
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
