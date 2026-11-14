@@ -22,6 +22,14 @@ class HomeScreen extends StatelessWidget {
           );
         }
 
+        final screenWidth = MediaQuery.sizeOf(context).width;
+        final actionCircleSize = (screenWidth * 0.11)
+            .clamp(40.0, 48.0)
+            .toDouble();
+        final actionTop = math
+            .max(MediaQuery.paddingOf(context).top + 12, screenWidth * 0.154)
+            .toDouble();
+
         return Scaffold(
           backgroundColor: AppColors.transparent,
           body: Container(
@@ -143,45 +151,21 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 Positioned(
-                  right: 70,
-                  top: 60,
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0XFF20707E)),
-                      color: AppColors.textWhite,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        "assets/svg/profile.svg",
-                        width: 20,
-                        height: 20,
-                        fit: BoxFit.cover,
-                        color: AppColors.deepTeal,
+                  right: screenWidth * 0.04,
+                  top: actionTop,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _buildHeaderActionButton(
+                        assetPath: "assets/svg/profile.svg",
+                        size: actionCircleSize,
                       ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 15,
-                  top: 60,
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0XFF20707E)),
-                      color: AppColors.textWhite,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        "assets/svg/notification.svg",
-                        width: 20,
-                        height: 20,
-                        fit: BoxFit.cover,
-                        color: AppColors.deepTeal,
+                      SizedBox(width: actionCircleSize * 0.28),
+                      _buildHeaderActionButton(
+                        assetPath: "assets/svg/notification.svg",
+                        size: actionCircleSize,
                       ),
-                    ),
+                    ],
                   ),
                 ),
 
@@ -399,6 +383,32 @@ class HomeScreen extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildHeaderActionButton({
+    required String assetPath,
+    required double size,
+  }) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        border: Border.all(color: const Color(0XFF20707E)),
+        color: AppColors.textWhite,
+        shape: BoxShape.circle,
+      ),
+      alignment: Alignment.center,
+      child: SvgPicture.asset(
+        assetPath,
+        width: size * 0.48,
+        height: size * 0.48,
+        fit: BoxFit.contain,
+        colorFilter: const ColorFilter.mode(
+          AppColors.deepTeal,
+          BlendMode.srcIn,
+        ),
+      ),
     );
   }
 
