@@ -47,25 +47,28 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: AppColors.ringGold,
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.asset(
-              'assets/svg/lion.svg',
-              height: screenSize.height / 2,
-              width: screenSize.width / 2,
-              fit: BoxFit.contain,
-            ),
-            const SizedBox(height: 16),
-            const Text(
-              'Astro App',
-              style: TextStyle(
-                color: AppColors.ink,
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
+        child: Padding(
+          padding: const EdgeInsets.all(30) ,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SvgPicture.asset(
+                'assets/svg/lion.svg',
+                height: screenSize.height / 2,
+                width: screenSize.width / 2,
+                fit: BoxFit.contain,
               ),
-            ),
-          ],
+              const SizedBox(height: 16),
+              const Text(
+                'Astro App',
+                style: TextStyle(
+                  color: AppColors.ink,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
