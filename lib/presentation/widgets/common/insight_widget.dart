@@ -633,6 +633,23 @@ class InsightWidget {
               fit: BoxFit.fill,
             ),
           ),
+          Positioned(
+            left: 0,
+            top: 2,
+            right: 4,
+            bottom: 3,
+     
+           
+            child: Container(
+              width: double.infinity,
+              height: 220,
+               decoration: BoxDecoration(
+                border: Border.all(color: Color(0xffCBC19B), width: 1),
+                // borderRadius: BorderRadius.circular(20),
+              ),
+            
+            ),
+          ) ,
 
           Positioned(
             bottom: 5,
