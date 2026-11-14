@@ -157,6 +157,12 @@ flutter:
         - asset: assets/fonts/Satoshi-BlackItalic.otf
           weight: 900
           style: italic
+    - family: Agdasima
+      fonts:
+        - asset: assets/fonts/Agdasima-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Agdasima-Bold.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

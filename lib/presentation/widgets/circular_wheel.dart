@@ -51,10 +51,12 @@ class CircularWheelPainter extends CustomPainter {
         text: TextSpan(
           text: unitLabels[i],
           style: TextStyle(
+
             color: AppColors.black,
             fontSize: labelFontSize,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Satoshi',
+            fontFamily: 'Agdasima',
+
           ),
         ),
         textDirection: TextDirection.ltr,
@@ -168,6 +170,7 @@ class CircularWheelPainter extends CustomPainter {
           text: number,
           style: TextStyle(
             fontSize: fontSize,
+            fontFamily: 'Agdasima',
             fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
             color: isSelected ? selectedColor : normalColor,
             height: 1,
