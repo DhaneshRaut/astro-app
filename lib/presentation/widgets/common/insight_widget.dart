@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:astrologer_app/core/constants/app_colors_constants.dart';
 import 'package:astrologer_app/presentation/insights_cubit/insights_state.dart';
 import 'package:astrologer_app/presentation/widgets/common/luck_number_widgets.dart';
@@ -638,18 +640,16 @@ class InsightWidget {
             top: 2,
             right: 4,
             bottom: 3,
-     
-           
+
             child: Container(
               width: double.infinity,
               height: 220,
-               decoration: BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border.all(color: Color(0xffCBC19B), width: 1),
                 // borderRadius: BorderRadius.circular(20),
               ),
-            
             ),
-          ) ,
+          ),
 
           Positioned(
             bottom: 5,
@@ -680,7 +680,7 @@ class InsightWidget {
               color: AppColors.textWhite.withOpacity(0.12),
             ),
           ),
-//top cloud right 
+          //top cloud right
           Positioned(
             right: -15,
             top: -30,
@@ -691,20 +691,24 @@ class InsightWidget {
                 //     color: AppColors.textWhite.withOpacity(0.05), // Replace with AppColors.textWhite
                 //     blurRadius: 0.5,
                 //     spreadRadius: 1,
-                //   ),  
+                //   ),
                 // ],
               ),
               width: 80,
               height: 80,
               child: ShaderMask(
                 shaderCallback: (Rect bounds) {
-                  return  RadialGradient(
+                  return RadialGradient(
                     center: Alignment.center,
                     radius:
                         0.5, // Adjust between 0.4 and 0.5 to control fade width
                     colors: [
-                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
-                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                      Colors.white.withOpacity(
+                        0.50,
+                      ), // Replace with AppColors.textWhite
+                      Colors.white.withOpacity(
+                        0.50,
+                      ), // Replace with AppColors.textWhite
                       Colors.transparent, // Fades outer border out
                     ],
                     stops: [
@@ -718,8 +722,10 @@ class InsightWidget {
                 child: SvgPicture.asset(
                   "assets/svg/faded_cloud.svg",
                   height: 80,
-                  colorFilter:  ColorFilter.mode(
-                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                  colorFilter: ColorFilter.mode(
+                    Colors.white.withOpacity(
+                      0.50,
+                    ), // Replace with AppColors.textWhite
                     BlendMode.srcIn,
                   ),
                 ),
@@ -727,7 +733,7 @@ class InsightWidget {
             ),
           ),
 
-            Positioned(
+          Positioned(
             left: -10,
             bottom: -5,
             child: Container(
@@ -737,20 +743,24 @@ class InsightWidget {
                 //     color: AppColors.textWhite.withOpacity(0.05), // Replace with AppColors.textWhite
                 //     blurRadius: 0.5,
                 //     spreadRadius: 1,
-                //   ),  
+                //   ),
                 // ],
               ),
               width: 80,
               height: 80,
               child: ShaderMask(
                 shaderCallback: (Rect bounds) {
-                  return  RadialGradient(
+                  return RadialGradient(
                     center: Alignment.bottomLeft,
                     radius:
                         0.5, // Adjust between 0.4 and 0.5 to control fade width
                     colors: [
-                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
-                    Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                      Colors.white.withOpacity(
+                        0.50,
+                      ), // Replace with AppColors.textWhite
+                      Colors.white.withOpacity(
+                        0.50,
+                      ), // Replace with AppColors.textWhite
                       Colors.transparent, // Fades outer border out
                     ],
                     stops: [
@@ -764,17 +774,16 @@ class InsightWidget {
                 child: SvgPicture.asset(
                   "assets/svg/faded_cloud.svg",
                   height: 80,
-                  colorFilter:  ColorFilter.mode(
-                                        Colors.red
-,
-                  //  Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
+                  colorFilter: ColorFilter.mode(
+                    Colors.red,
+                    //  Colors.white.withOpacity(0.50), // Replace with AppColors.textWhite
                     BlendMode.srcIn,
                   ),
                 ),
               ),
             ),
           ),
-    
+
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
             child: Column(
@@ -792,17 +801,26 @@ class InsightWidget {
                   ),
                 ),
                 SizedBox(height: 10),
-                Text(
-                  'Leo is ruled by the Sun ☀️, which is why it\'s traditionally '
-                  'associated with confidence, creativity, warmth, and a natural '
-                  'desire to shine.',
-                  style: TextStyle(
-                    color: AppColors.white70,
-                    fontFamily: "Satoshi",
-                    fontWeight: FontWeight.w500,
-
-                    fontSize: 13,
-                    height: 1.45,
+                Text.rich(
+                  TextSpan(
+                    style: TextStyle(
+                      color: AppColors.white70,
+                      fontFamily: "Satoshi",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 13,
+                      height: 1.45,
+                    ),
+                    children: [
+                      TextSpan(text: 'Leo is ruled by the Sun '),
+                      TextSpan(
+                        text: '☀︎',
+                        style: TextStyle(color: Colors.orange),
+                      ),
+                      TextSpan(
+                        text:
+                            ', which is why it’s traditionally associated with confidence, creativity, warmth, and a natural desire to shine',
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -815,132 +833,133 @@ class InsightWidget {
 
   static Widget buildDestinyPathwayCardNew(int destinyNumber) {
     return Center(
-      child: AspectRatio(
-        aspectRatio: 3 / 3,
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.iceWhite,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.black.withOpacity(0.05),
-                blurRadius: 10,
-                spreadRadius: 2,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final availableWidth = constraints.maxWidth.isFinite
+              ? constraints.maxWidth
+              : MediaQuery.sizeOf(context).width;
+          final cardSize = math.min(availableWidth, 480.0);
+          final scale = cardSize / 375;
+
+          return SizedBox.square(
+            dimension: cardSize,
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.iceWhite,
+                borderRadius: BorderRadius.circular(20 * scale),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.black.withValues(alpha: 0.05),
+                    blurRadius: 10 * scale,
+                    spreadRadius: 2 * scale,
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Align(
-                  alignment: const Alignment(0, -0.4),
-                  child: Container(
-                    width: 80,
-                    height: 100,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.paleYellow,
-
-                      boxShadow: [
-                        BoxShadow(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20 * scale),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Align(
+                      alignment: const Alignment(0, -0.4),
+                      child: Container(
+                        width: 76 * scale,
+                        height: 76 * scale,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
                           color: AppColors.paleYellow,
-                          blurRadius: 40,
-                          spreadRadius: 10,
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.paleYellow,
+                              blurRadius: 40 * scale,
+                              spreadRadius: 10 * scale,
+                            ),
+                          ],
                         ),
-                      ],
+                        child: Center(
+                          child: Text(
+                            '$destinyNumber',
+                            style: TextStyle(
+                              fontSize: 35 * scale,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.neutralGray,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                    child: Center(
-                      child: Text(
-                        '$destinyNumber',
-                        style: const TextStyle(
-                          fontSize: 35,
-
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.neutralGray,
-                        ),
+                    Positioned(
+                      top: 40 * scale,
+                      left: -10 * scale,
+                      child: SvgPicture.asset(
+                        'assets/svg/left_tree.svg',
+                        width: 130 * scale,
+                        fit: BoxFit.contain,
                       ),
                     ),
-                  ),
-                ),
-
-                Positioned(
-                  top: 40,
-                  left: -10,
-                  child: SvgPicture.asset(
-                    'assets/svg/left_tree.svg',
-                    width: 140,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                Positioned(
-                  top: 40,
-                  right: -10,
-                  child: SvgPicture.asset(
-                    'assets/svg/right_tree.svg',
-                    width: 140,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-
-                Positioned(
-                  bottom: -50,
-                  left: 0,
-                  right: 0,
-                  height: 250,
-
-                  child: SvgPicture.asset(
-                    'assets/svg/direction_path.svg',
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
-
-                Positioned(
-                  bottom: 50,
-                  child: SvgPicture.asset(
-                    'assets/svg/direction_person_standing.svg',
-                    height: 130,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-
-                Positioned(
-                  bottom: -20,
-                  left: 0,
-                  right: 0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'Destiny Number $destinyNumber',
-                        style: const TextStyle(
-                          fontFamily: "Satoshi",
-
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.black,
-                          letterSpacing: -0.5,
-                        ),
+                    Positioned(
+                      top: 40 * scale,
+                      right: -10 * scale,
+                      child: SvgPicture.asset(
+                        'assets/svg/right_tree.svg',
+                        width: 130 * scale,
+                        fit: BoxFit.contain,
                       ),
-                      const Text(
-                        'The Seeker',
-                        style: TextStyle(
-                          fontFamily: "Satoshi",
-
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.luckyTeal,
-                        ),
+                    ),
+                    Positioned(
+                      bottom: -20 * scale,
+                      left: 0,
+                      right: 0,
+                      height: 300 * scale,
+                      child: SvgPicture.asset(
+                        'assets/svg/direction_path.svg',
+                        fit: BoxFit.fitWidth,
                       ),
-                      const SizedBox(height: 25),
-                    ],
-                  ),
+                    ),
+                    Positioned(
+                      bottom: 100 * scale,
+                      child: SvgPicture.asset(
+                        'assets/svg/direction_person_standing.svg',
+                        height: 100 * scale,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 50*scale,
+                      left: 0,
+                      right: 0,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Destiny Number $destinyNumber',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: "Satoshi",
+                              fontSize: 18 * scale,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.black,
+                              letterSpacing: -0.5 * scale,
+                            ),
+                          ),
+                          Text(
+                            'The Seeker',
+                            style: TextStyle(
+                              fontFamily: "Satoshi",
+                              fontSize: 12 * scale,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.luckyTeal,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
