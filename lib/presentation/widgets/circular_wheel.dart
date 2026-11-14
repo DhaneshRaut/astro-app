@@ -9,7 +9,7 @@ class CircularWheelPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width * 0.93, size.height * 0.465);
 
-    final radius = math.min(size.height * 0.53, size.width * 0.9);
+    final radius = math.min(size.height * 0.53, size.width * 1.0);
 
     final radii = [
       radius,
@@ -45,7 +45,7 @@ class CircularWheelPainter extends CustomPainter {
 
     for (var i = 0; i < unitLabels.length; i++) {
       final labelRadius = i == radii.length - 1
-          ? radii[i] * 0.72
+          ? radii[i] * 0.65
           : (radii[i] + radii[i + 1]) / 2;
       final textPainter = TextPainter(
         text: TextSpan(
